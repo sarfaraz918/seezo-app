@@ -1,12 +1,14 @@
 /* ==========================================================================
-   SEEZO Global Design System - Ultra-lightweight Mobile First CSS
+   SEEZO Global Design System - Production CSS
    ========================================================================== */
 
 :root {
   --bg-primary: #0a0d14;
   --bg-secondary: #101622;
   --bg-card: #151d2c;
+  --bg-card-hover: #1b2538;
   --border-subtle: #202b3d;
+  --border-active: #2f3e57;
   --accent-cyan: #00e5ff;
   --accent-green: #00d287;
   --accent-gold: #ffb800;
@@ -34,7 +36,47 @@ body {
 }
 
 /* ==========================================================================
-   PHASE 6: INITIAL APP LOADER STYLES
+   TOAST NOTIFICATION COMPONENT
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 90%;
+  max-width: 360px;
+  pointer-events: none;
+}
+
+.seezo-toast {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-active);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.seezo-toast.success { border-color: var(--accent-green); }
+.seezo-toast.error { border-color: #ef4444; }
+
+@keyframes toastIn {
+  0% { opacity: 0; transform: translateY(-12px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   INITIAL APP LOADER
    ========================================================================== */
 .app-loader {
   position: fixed;
@@ -44,7 +86,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .app-loader.hidden {
@@ -63,20 +105,16 @@ body {
 }
 
 .loader-logo-wrap {
-  width: 80px;
-  height: 80px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 18px;
 }
 
 .loader-svg {
   width: 100%;
   height: 100%;
   filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.4));
-  animation: logoPulse 2s ease-in-out infinite alternate;
+  animation: logoPulse 1.8s ease-in-out infinite alternate;
 }
 
 @keyframes logoPulse {
@@ -98,7 +136,7 @@ body {
   font-size: 10px;
   letter-spacing: 1.8px;
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   font-weight: 600;
 }
 
@@ -114,12 +152,12 @@ body {
   width: 0%;
   height: 100%;
   background: linear-gradient(90deg, #00E5FF, #00D287);
-  animation: loadProgress 1.4s ease-in-out forwards;
+  animation: loadProgress 1.2s ease-in-out forwards;
 }
 
 @keyframes loadProgress {
   0% { width: 5%; }
-  60% { width: 75%; }
+  70% { width: 85%; }
   100% { width: 100%; }
 }
 
@@ -131,7 +169,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
   min-height: 100dvh;
-  position: relative;
 }
 
 .top-bar {
@@ -232,7 +269,7 @@ body {
 }
 
 /* ==========================================================================
-   MAIN CONTENT & COIN HERO
+   MAIN DASHBOARD & CARDS
    ========================================================================== */
 .main-content {
   flex: 1;
@@ -249,37 +286,34 @@ body {
   display: block;
 }
 
-/* PHASE 5: 3D SEZO COIN & BALANCE CARD */
+/* 3D Coin Card */
 .coin-hero-card {
   background: linear-gradient(180deg, #162032 0%, #101726 100%);
   border: 1px solid var(--border-subtle);
   border-radius: 20px;
-  padding: 24px 16px;
+  padding: 22px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .coin-stage {
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   perspective: 800px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-/* Orbital Particles */
 .coin-orbital-ring {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
   border: 1px dashed rgba(0, 229, 255, 0.25);
   animation: orbitRotate 12s linear infinite;
@@ -304,18 +338,15 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* 3D Coin Rotation */
 .sezo-coin-3d-wrapper {
-  width: 100px;
-  height: 100px;
-  position: relative;
+  width: 96px;
+  height: 96px;
   cursor: pointer;
 }
 
 .sezo-coin-3d {
   width: 100%;
   height: 100%;
-  position: relative;
   transform-style: preserve-3d;
   animation: coinAutoTurn 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   transition: transform 0.4s ease;
@@ -331,13 +362,8 @@ body {
   filter: drop-shadow(0 4px 12px rgba(255, 184, 0, 0.35));
 }
 
-.coin-front {
-  transform: rotateY(0deg);
-}
-
-.coin-back {
-  transform: rotateY(180deg);
-}
+.coin-front { transform: rotateY(0deg); }
+.coin-back { transform: rotateY(180deg); }
 
 .coin-svg {
   width: 100%;
@@ -345,7 +371,6 @@ body {
   display: block;
 }
 
-/* Smooth 3D Coin Turn Animation */
 @keyframes coinAutoTurn {
   0% { transform: rotateY(0deg); }
   35% { transform: rotateY(180deg); }
@@ -373,19 +398,18 @@ body {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .balance-val {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 800;
   color: #FFFFFF;
-  letter-spacing: -0.5px;
   line-height: 1;
 }
 
 .balance-curr {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--accent-gold);
 }
@@ -396,11 +420,189 @@ body {
   gap: 6px;
   background: rgba(0, 229, 255, 0.08);
   border: 1px solid rgba(0, 229, 255, 0.25);
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 600;
   color: var(--accent-cyan);
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.metric-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.metric-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metric-icon-wrap.cyan {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--accent-cyan);
+}
+
+.metric-icon-wrap.green {
+  background: rgba(0, 210, 135, 0.1);
+  color: var(--accent-green);
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Action Cards */
+.action-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.action-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.action-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.action-badge-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.action-badge-icon.gold {
+  background: rgba(255, 184, 0, 0.12);
+  color: var(--accent-gold);
+}
+
+.action-badge-icon.cyan {
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--accent-cyan);
+}
+
+.card-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-subheading {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.reward-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(255, 184, 0, 0.1);
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 184, 0, 0.25);
+}
+
+.reward-pill.cyan {
+  color: var(--accent-cyan);
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.25);
+}
+
+.action-card-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-primary-action {
+  flex: 1;
+  background: linear-gradient(135deg, #00E5FF 0%, #00D287 100%);
+  border: none;
+  border-radius: 12px;
+  color: #0B0E14;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-secondary-action {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  color: var(--accent-cyan);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.cooldown-timer-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cooldown-timer-badge.hidden {
+  display: none;
 }
 
 /* System Notice Card */
@@ -420,13 +622,13 @@ body {
 }
 
 .notice-text h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .notice-text p {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
   line-height: 1.4;
   word-break: break-word;
