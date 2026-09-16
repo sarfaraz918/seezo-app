@@ -6,7 +6,6 @@
   <title>SEEZO Platform</title>
   
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <!-- AdsGram Official Rewarded Ads SDK for Telegram Mini Apps -->
   <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +16,7 @@
 </head>
 <body>
 
-  <!-- Brand Loader -->
+  <!-- Brand Startup Loader -->
   <div id="app-loader" class="app-loader">
     <div class="loader-content">
       <div class="loader-logo-wrap">
@@ -35,13 +34,13 @@
     </div>
   </div>
 
-  <!-- Toast Container -->
+  <!-- Toast Notification System -->
   <div id="toast-container" class="toast-container"></div>
 
-  <!-- App Wrapper -->
+  <!-- Main Container -->
   <div id="app-container" class="app-container">
     
-    <!-- Top Bar -->
+    <!-- Header -->
     <header class="top-bar">
       <div class="brand-container">
         <div class="brand-logo-wrap">
@@ -79,10 +78,10 @@
       </div>
     </header>
 
-    <!-- Dynamic Screens -->
+    <!-- Main Views Screen -->
     <main id="main-content" class="main-content">
       
-      <!-- SCREEN 1: HOME DASHBOARD -->
+      <!-- SCREEN 1: HOME -->
       <section id="view-home" class="view-screen active">
         
         <div class="coin-hero-card">
@@ -175,7 +174,7 @@
           </div>
         </div>
 
-        <!-- Daily Reward Card -->
+        <!-- Daily Reward -->
         <div class="action-card daily-reward-card">
           <div class="action-card-header">
             <div class="action-card-title-group">
@@ -208,7 +207,7 @@
           </div>
         </div>
 
-        <!-- PHASE 11: AD EARNING CARD -->
+        <!-- Ad Earning -->
         <div class="action-card ad-earning-card">
           <div class="action-card-header">
             <div class="action-card-title-group">
@@ -219,7 +218,7 @@
                 </svg>
               </div>
               <div>
-                <h3 class="card-heading">Telegram Sponsored Ads</h3>
+                <h3 class="card-heading">Sponsored Ads</h3>
                 <p class="card-subheading">Watch verified video to earn</p>
               </div>
             </div>
@@ -232,7 +231,7 @@
           </div>
         </div>
 
-        <!-- Status Card -->
+        <!-- System Node Info -->
         <div class="system-notice-card">
           <div class="notice-icon">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -247,10 +246,22 @@
 
       </section>
 
-      <!-- SCREEN 2: WALLET & WITHDRAWAL (PHASE 12, 13, 14) -->
+      <!-- SCREEN 2: TASKS (PHASE 15) -->
+      <section id="view-tasks" class="view-screen">
+        <div class="tab-header-card">
+          <h2 class="tab-main-title">Earning Quests</h2>
+          <p class="tab-main-sub">Complete official community tasks and earn SEZO coin instantly.</p>
+        </div>
+
+        <div id="tasks-list-container" class="tasks-list-container">
+          <div class="tx-empty-state">
+            <span>Loading active tasks...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: WALLET (PHASE 12, 13, 14) -->
       <section id="view-wallet" class="view-screen">
-        
-        <!-- Wallet Balance Card -->
         <div class="wallet-overview-card">
           <div class="wallet-stat-row">
             <div>
@@ -277,7 +288,6 @@
           </div>
         </div>
 
-        <!-- Withdrawal Form Card -->
         <div class="action-card withdraw-form-card">
           <div class="action-card-header">
             <div class="action-card-title-group">
@@ -334,7 +344,6 @@
           </form>
         </div>
 
-        <!-- Transaction History -->
         <div class="tx-history-container">
           <div class="section-title-wrap">
             <h3 class="section-title">Audit Ledger & Transactions</h3>
@@ -348,26 +357,116 @@
           
           <div id="tx-history-list" class="tx-history-list">
             <div class="tx-empty-state">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
               <span>No transactions recorded yet</span>
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- SCREEN 4: LEADERBOARD (PHASE 17) -->
+      <section id="view-leaderboard" class="view-screen">
+        <div class="tab-header-card">
+          <div class="ranking-badge-top">
+            <span>YOUR CURRENT RANK:</span>
+            <strong id="my-rank-display">SYNCING</strong>
+          </div>
+          <h2 class="tab-main-title">Top SEEZO Earners</h2>
+          <p class="tab-main-sub">Real-time global rankings based on verified total earned SEZO.</p>
+        </div>
+
+        <div id="leaderboard-list-container" class="leaderboard-list-container">
+          <div class="tx-empty-state">
+            <span>Loading live rankings...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: PROFILE, SETTINGS & REFERRALS (PHASE 16 & 18) -->
+      <section id="view-profile" class="view-screen">
+        
+        <!-- User Profile Card -->
+        <div class="profile-card">
+          <div class="profile-avatar-big" id="profile-avatar-big">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3 class="profile-name" id="profile-name">Member</h3>
+          <span class="profile-username" id="profile-username">@username</span>
+          <div class="profile-tg-id" id="profile-tg-id">ID: --------</div>
+        </div>
+
+        <!-- PHASE 16: REFERRAL SYSTEM CARD -->
+        <div class="action-card referral-share-card">
+          <div class="action-card-header">
+            <div class="action-card-title-group">
+              <div class="action-badge-icon cyan">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </div>
+              <div>
+                <h3 class="card-heading">Invite Friends & Earn</h3>
+                <p class="card-subheading">Share your unique Telegram link</p>
+              </div>
+            </div>
+            <div class="reward-pill cyan">+25 SEZO</div>
+          </div>
+          <div class="referral-input-wrap">
+            <input type="text" id="referral-link-input" class="form-input" readonly value="https://t.me/...">
+            <button id="btn-copy-ref" class="btn-copy">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+          <button id="btn-share-tg" class="btn-primary-action full-width" style="margin-top: 10px;">
+            Share via Telegram
+          </button>
+        </div>
+
+        <!-- SETTINGS & INFO MENU -->
+        <div class="settings-list">
+          <button class="settings-item" id="btn-open-privacy">
+            <div class="settings-item-left">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Privacy Policy</span>
+            </div>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <button class="settings-item" id="btn-open-support">
+            <div class="settings-item-left">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>Help & Official Support</span>
+            </div>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="app-version-foot">SEEZO Platform v1.0.0 • Mumbai Production Cluster</div>
+        </div>
 
       </section>
 
-      <!-- Screens Placeholders -->
-      <section id="view-tasks" class="view-screen"></section>
-      <section id="view-leaderboard" class="view-screen"></section>
-      <section id="view-profile" class="view-screen"></section>
-
     </main>
 
-    <!-- Bottom Navigation -->
+    <!-- Navigation -->
     <nav class="bottom-nav">
       <button class="nav-item active" data-target="view-home">
         <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -411,6 +510,23 @@
       </button>
     </nav>
 
+  </div>
+
+  <!-- POPUP MODAL (PRIVACY / SUPPORT) -->
+  <div id="info-modal" class="info-modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title">Notice</h3>
+        <button id="btn-close-modal" class="btn-close-modal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
   </div>
 
   <script src="js/app.js"></script>
