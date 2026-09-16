@@ -8,66 +8,186 @@
   <!-- Telegram WebApp SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-  <!-- Google Font: Inter (Lightweight & Clean) -->
+  <!-- Google Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- App Wrapper -->
+  <!-- ==========================================
+       PHASE 6: BRANDED INITIAL LOADING SCREEN
+       ========================================== -->
+  <div id="app-loader" class="app-loader">
+    <div class="loader-content">
+      <div class="loader-logo-wrap">
+        <!-- SVG Hex Shield Brand Logo -->
+        <svg class="loader-svg" viewBox="0 0 100 100" fill="none">
+          <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#00E5FF" stroke-width="4" fill="#101622" />
+          <path d="M68 30 H36 C30 30 26 34 26 40 C26 46 30 50 36 50 H64 C70 50 74 54 74 60 C74 66 70 70 64 70 H32" 
+                stroke="#00D287" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="loader-pulse-ring"></div>
+      </div>
+      <h2 class="loader-brand-title">SEEZO</h2>
+      <p class="loader-brand-subtitle">SECURE EARNING NETWORK</p>
+      <div class="loader-progress-bar">
+        <div class="loader-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MAIN APPLICATION LAYOUT
+       ========================================== -->
   <div id="app-container" class="app-container">
     
-    <!-- Top Bar -->
+    <!-- Top Bar with SEEZO Vector Brand Logo -->
     <header class="top-bar">
+      <div class="brand-container">
+        <div class="brand-logo-wrap">
+          <svg class="seezo-brand-logo" viewBox="0 0 100 100" fill="none">
+            <defs>
+              <linearGradient id="seezoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00E5FF" />
+                <stop offset="100%" stop-color="#00D287" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#seezoGrad)" stroke-width="4" fill="#101622" />
+            <path d="M68 30 H36 C30 30 26 34 26 40 C26 46 30 50 36 50 H64 C70 50 74 54 74 60 C74 66 70 70 64 70 H32" 
+                  stroke="url(#seezoGrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="68" cy="30" r="4" fill="#00E5FF" />
+            <circle cx="32" cy="70" r="4" fill="#00D287" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">SEEZO</span>
+          <span class="brand-tag">FINTECH NETWORK</span>
+        </div>
+      </div>
+
+      <!-- Right User Status -->
       <div class="user-chip">
         <div class="user-avatar" id="top-user-avatar">
-          <!-- Fallback Vector Icon -->
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
         </div>
         <div class="user-info">
-          <span class="user-name" id="top-user-name">Loading...</span>
+          <span class="user-name" id="top-user-name">Guest</span>
           <span class="user-status-badge" id="top-user-status">SYNCING</span>
         </div>
-      </div>
-      <div class="connection-status" id="connection-indicator">
-        <span class="status-dot online"></span>
       </div>
     </header>
 
     <!-- Main Content Dynamic View Container -->
     <main id="main-content" class="main-content">
-      <!-- ডিফল্ট স্ক্রিন হিসেবে Home ড্যাশবোর্ড স্ক্রিন থাকবে -->
+      
+      <!-- HOME VIEW -->
       <section id="view-home" class="view-screen active">
-        <!-- প্রাথমিক প্লেসহোল্ডার যা পরবর্তী ধাপে রিয়েল ব্র্যান্ডিং এবং ড্যাশবোর্ড কার্ডে রূপান্তরিত হবে -->
+        
+        <!-- PHASE 5: CUSTOM SEZO COIN SHOWCASE CARD -->
+        <div class="coin-hero-card">
+          <div class="coin-stage">
+            <!-- Rotating Orbital Particles -->
+            <div class="coin-orbital-ring">
+              <span class="orbit-dot dot-1"></span>
+              <span class="orbit-dot dot-2"></span>
+              <span class="orbit-dot dot-3"></span>
+            </div>
+
+            <!-- 3D Turning SEZO Coin -->
+            <div class="sezo-coin-3d-wrapper">
+              <div class="sezo-coin-3d" id="sezo-coin-elem">
+                
+                <!-- Front Side -->
+                <div class="coin-face coin-front">
+                  <svg viewBox="0 0 200 200" class="coin-svg" fill="none">
+                    <defs>
+                      <radialGradient id="coinGoldGrad" cx="35%" cy="35%" r="65%">
+                        <stop offset="0%" stop-color="#FFF4D0" />
+                        <stop offset="40%" stop-color="#FFB800" />
+                        <stop offset="85%" stop-color="#D97706" />
+                        <stop offset="100%" stop-color="#78350F" />
+                      </radialGradient>
+                      <linearGradient id="innerRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00E5FF" />
+                        <stop offset="100%" stop-color="#00D287" />
+                      </linearGradient>
+                    </defs>
+                    
+                    <!-- Coin Base Edge & Body -->
+                    <circle cx="100" cy="100" r="92" fill="url(#coinGoldGrad)" stroke="#FFD700" stroke-width="5" />
+                    <!-- Decorative Grooved Inner Ring -->
+                    <circle cx="100" cy="100" r="76" stroke="#92400E" stroke-width="2.5" stroke-dasharray="6 3" fill="none" />
+                    <circle cx="100" cy="100" r="68" fill="#141B28" stroke="url(#innerRimGrad)" stroke-width="3" />
+                    
+                    <!-- Coin Emblem Text & Emblem -->
+                    <path d="M75 75 H125 C132 75 136 79 136 85 C136 92 130 96 122 98 L78 102 C70 104 64 108 64 115 C64 121 68 125 75 125 H125" 
+                          stroke="#FFD700" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <text x="100" y="152" text-anchor="middle" fill="#00E5FF" font-size="14" font-weight="800" letter-spacing="2">SEZO</text>
+                  </svg>
+                </div>
+
+                <!-- Back Side -->
+                <div class="coin-face coin-back">
+                  <svg viewBox="0 0 200 200" class="coin-svg" fill="none">
+                    <circle cx="100" cy="100" r="92" fill="url(#coinGoldGrad)" stroke="#FFD700" stroke-width="5" />
+                    <circle cx="100" cy="100" r="76" stroke="#92400E" stroke-width="2.5" stroke-dasharray="6 3" fill="none" />
+                    <circle cx="100" cy="100" r="68" fill="#141B28" stroke="url(#innerRimGrad)" stroke-width="3" />
+                    <polygon points="100,60 130,85 130,125 100,150 70,125 70,85" stroke="#FFD700" stroke-width="5" fill="none"/>
+                    <text x="100" y="112" text-anchor="middle" fill="#00D287" font-size="28" font-weight="900">S</text>
+                  </svg>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Balance Presentation -->
+          <div class="coin-details">
+            <span class="balance-label">TOTAL AVAILABLE BALANCE</span>
+            <div class="balance-number-wrap">
+              <span class="balance-val" id="user-balance">0</span>
+              <span class="balance-curr">SEZO</span>
+            </div>
+            <div class="rate-conversion-pill">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              <span>20 SEZO = 1.00 BDT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Notice -->
         <div class="system-notice-card">
           <div class="notice-icon">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="16" x2="12" y2="12"></line>
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
           </div>
           <div class="notice-text">
-            <h3>SEEZO Core Engine Initialized</h3>
-            <p id="telegram-debug-info">Checking Telegram WebApp context...</p>
+            <h3>SEEZO Engine Online</h3>
+            <p id="telegram-debug-info">Syncing with secure backend node...</p>
           </div>
         </div>
+
       </section>
 
-      <!-- অন্যান্য স্ক্রিনের প্লেসহোল্ডার কনটেইনার -->
+      <!-- Other View Screens -->
       <section id="view-tasks" class="view-screen"></section>
       <section id="view-wallet" class="view-screen"></section>
       <section id="view-leaderboard" class="view-screen"></section>
       <section id="view-profile" class="view-screen"></section>
     </main>
 
-    <!-- Bottom Navigation Bar (No emojis, Pure SVG icons) -->
+    <!-- Bottom Navigation Bar (No emojis, Pure Vector SVGs) -->
     <nav class="bottom-nav">
       <button class="nav-item active" data-target="view-home">
         <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
