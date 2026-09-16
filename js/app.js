@@ -1,34 +1,50 @@
 /**
- * SEEZO Platform - Core Application Engine
+ * SEEZO Platform - Core Client Engine
+ * Phase 4, 5, 6 Integrated Build
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ১. ব্র্যান্ডেড লোডার হ্যান্ডলিং
+  handleAppLoader();
+
+  // ২. টেলিগ্রাম কনটেক্সট ইনিশিয়ালাইজেশন
   initTelegramContext();
+
+  // ৩. নেভিগেশন কন্ট্রোলার
   initNavigation();
+
+  // ৪. কয়েন ইন্টার‍্যাকশন
+  initCoinTouch();
 });
 
-// ১. টেলিগ্রাম ওয়েব অ্যাপ ইনিশিয়ালাইজেশন
+// লোডিং স্ক্রিন নিয়ন্ত্রক (Phase 6)
+function handleAppLoader() {
+  const loader = document.getElementById('app-loader');
+  
+  // ১.২ সেকেন্ডে ব্র্যান্ডেড অ্যানিমেশন সম্পন্ন করে অ্যাপ দৃশ্যমান হবে
+  setTimeout(() => {
+    if (loader) {
+      loader.classList.add('hidden');
+      setTimeout(() => loader.remove(), 500); // মেমরি বাঁচাতে সম্পূর্ণ রিমুভ
+    }
+  }, 1200);
+}
+
+// টেলিগ্রাম ওয়েব অ্যাপ ইনিশিয়ালাইজেশন (Phase 3 & 4)
 function initTelegramContext() {
   const debugInfo = document.getElementById('telegram-debug-info');
   const userNameEl = document.getElementById('top-user-name');
   const userStatusEl = document.getElementById('top-user-status');
   const userAvatarEl = document.getElementById('top-user-avatar');
 
-  // টেলিগ্রাম গ্লোবাল অবজেক্ট ভেরিফিকেশন
   if (window.Telegram && window.Telegram.WebApp) {
     const tg = window.Telegram.WebApp;
     
-    // টেলিগ্রাম উইন্ডো সম্পূর্ণ স্ক্রিনে এক্সপ্যান্ড করা
     tg.ready();
     tg.expand();
 
-    // হেডার কালার ব্যাকগ্রাউন্ডের সাথে ম্যাচ করা
-    if (tg.setHeaderColor) {
-      tg.setHeaderColor('#101622');
-    }
-    if (tg.setBackgroundColor) {
-      tg.setBackgroundColor('#0a0d14');
-    }
+    if (tg.setHeaderColor) tg.setHeaderColor('#101622');
+    if (tg.setBackgroundColor) tg.setBackgroundColor('#0a0d14');
 
     const initDataUnsafe = tg.initDataUnsafe;
 
@@ -37,26 +53,26 @@ function initTelegramContext() {
       const displayName = user.first_name + (user.last_name ? ' ' + user.last_name : '');
       
       userNameEl.textContent = displayName;
-      userStatusEl.textContent = 'ONLINE';
+      userStatusEl.textContent = 'VERIFIED';
       
       if (user.photo_url) {
         userAvatarEl.innerHTML = `<img src="${user.photo_url}" alt="Avatar">`;
       }
 
-      debugInfo.textContent = `Connected as Telegram User ID: ${user.id} (@${user.username || 'N/A'}). Client integrity validated.`;
+      debugInfo.textContent = `Node: Telegram Client Connected (${user.id}). Security handshake ready.`;
     } else {
-      userNameEl.textContent = 'Web Preview';
+      userNameEl.textContent = 'Web Tester';
       userStatusEl.textContent = 'DEV MODE';
-      debugInfo.textContent = 'Running outside Telegram. Direct browser testing environment active.';
+      debugInfo.textContent = 'Local sandbox active. Open inside Telegram for full functionality.';
     }
   } else {
-    userNameEl.textContent = 'Local Guest';
-    userStatusEl.textContent = 'OFFLINE';
-    debugInfo.textContent = 'Telegram WebApp SDK not detected. Running standalone.';
+    userNameEl.textContent = 'Guest User';
+    userStatusEl.textContent = 'STANDALONE';
+    debugInfo.textContent = 'Browser testing mode. Telegram SDK awaiting activation.';
   }
 }
 
-// ২. বটম নেভিগেশন ট্যাব সুইচিং
+// বটম নেভিগেশন কন্ট্রোলার
 function initNavigation() {
   const navButtons = document.querySelectorAll('.nav-item');
   const screens = document.querySelectorAll('.view-screen');
@@ -65,21 +81,32 @@ function initNavigation() {
     btn.addEventListener('click', () => {
       const targetScreenId = btn.getAttribute('data-target');
 
-      // বাটন অ্যাক্টিভ স্টেট টগল
       navButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // স্ক্রিন ভিউ টগল
       screens.forEach(s => s.classList.remove('active'));
       const activeScreen = document.getElementById(targetScreenId);
       if (activeScreen) {
         activeScreen.classList.add('active');
       }
 
-      // টেলিগ্রাম হেপটিক ভাইব্রেশন (যদি ডিভাইসে সাপোর্ট করে)
+      // হেপটিক ফিডব্যাক
       if (window.Telegram?.WebApp?.HapticFeedback) {
         window.Telegram.WebApp.HapticFeedback.selectionChanged();
       }
     });
+  });
+}
+
+// ৩D SEZO কয়েন টাচ ইফেক্ট (Phase 5)
+function initCoinTouch() {
+  const coin = document.getElementById('sezo-coin-elem');
+  if (!coin) return;
+
+  coin.parentElement.addEventListener('click', () => {
+    // টেলিগ্রাম হেপটিক ভাইব্রেশন
+    if (window.Telegram?.WebApp?.HapticFeedback) {
+      window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+    }
   });
 }
