@@ -1,6 +1,6 @@
 /**
  * SEEZO Platform - Core Engine
- * Integrated Phase 11 (Ads) & Phase 12, 13, 14 (Wallet & Payouts)
+ * Production AdsGram Rewarded Video & Strict Anti-Abuse Controller
  */
 
 window.SEEZO_STATE = {
@@ -8,7 +8,8 @@ window.SEEZO_STATE = {
   balance: 0,
   initData: '',
   timerInterval: null,
-  adController: null
+  // AdsGram Official Test Block ID (পরবর্তীতে adsgram.ai থেকে আপনার রিয়েল আইডি বসাতে পারবেন)
+  adsgramBlockId: "int-1736"
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,7 +46,7 @@ function showToast(message, type = 'success') {
   }, 3200);
 }
 
-// টেলিগ্রাম ও ইনিশিয়াল সিঙ্ক
+// টেলিগ্রাম এবং প্রোফাইল সিঙ্ক
 async function initTelegramContext() {
   const debugInfo = document.getElementById('telegram-debug-info');
   const userNameEl = document.getElementById('top-user-name');
@@ -102,7 +103,7 @@ async function initTelegramContext() {
   }
 }
 
-// UI রেন্ডারিং
+// ড্যাশবোর্ড আপডেট
 function updateDashboardUI(userData) {
   const balanceEl = document.getElementById('user-balance');
   const bdtEl = document.getElementById('bdt-equivalent-val');
@@ -120,7 +121,6 @@ function updateDashboardUI(userData) {
   totalEarnedEl.textContent = `${earned.toLocaleString()} SEZO`;
   referralsEl.textContent = `${referrals} Users`;
 
-  // ওয়ালেট ট্যাবের ডাটা আপডেট
   const walletBal = document.getElementById('wallet-balance-val');
   const walletBdt = document.getElementById('wallet-bdt-sub');
   const walletPending = document.getElementById('wallet-pending-val');
@@ -132,7 +132,7 @@ function updateDashboardUI(userData) {
   if (walletWithdrawn) walletWithdrawn.textContent = `${Number(userData.total_withdrawn || 0).toLocaleString()} SEZO`;
 }
 
-// PHASE 10: ডেইলি রিওয়ার্ড
+// ডেইলি রিওয়ার্ড
 function initDailyRewardEvents() {
   const claimBtn = document.getElementById('btn-claim-daily');
   const claimBtnText = document.getElementById('btn-claim-text');
@@ -207,7 +207,7 @@ function initDailyRewardEvents() {
   }
 }
 
-// PHASE 11: অ্যাড আর্নিং কন্ট্রোলার (AdsGram / Fallback)
+// PHASE 11: আসল AdsGram Rewarded Video Integration (কোনো ফেক টাইমার ছাড়া)
 function initAdEarningEvents() {
   const adBtn = document.getElementById('btn-watch-ad');
   const adBtnText = document.getElementById('btn-ad-text');
@@ -219,36 +219,42 @@ function initAdEarningEvents() {
     }
 
     adBtn.disabled = true;
-    adBtnText.textContent = 'Loading Sponsored Ad...';
+    adBtnText.textContent = 'Connecting to Ad Network...';
 
-    // AdsGram চেক বা অফিসিয়াল রিওয়ার্ড হ্যান্ডলার
     if (window.Adsgram) {
       try {
-        const AdController = window.Adsgram.init({ blockId: "int-seezo" });
-        AdController.show().then(async () => {
-          // অ্যাড দেখা শেষ হলে ব্যাকএন্ডে রিওয়ার্ড ভেরিফাই
+        const AdController = window.Adsgram.init({ 
+          blockId: window.SEEZO_STATE.adsgramBlockId,
+          debug: false 
+        });
+
+        AdController.show().then(async (result) => {
+          // ইউজার সম্পূর্ণ অ্যাড দেখলে তবেই রিওয়ার্ড প্রসেস হবে
+          adBtnText.textContent = 'Verifying Completed View...';
           await claimAdReward();
         }).catch((err) => {
-          console.warn('Ad stream notice:', err);
-          fallbackAdSimulation();
+          console.error('AdsGram Event Notice:', err);
+          showToast('Ad was not completed or no ad available. Reward canceled.', 'error');
+          resetAdButton();
         });
-      } catch (e) {
-        fallbackAdSimulation();
+
+      } catch (err) {
+        console.error('AdsGram Init Error:', err);
+        showToast('Ad service temporarily unavailable.', 'error');
+        resetAdButton();
       }
     } else {
-      fallbackAdSimulation();
+      showToast('Ad provider SDK not ready yet. Please try again.', 'error');
+      resetAdButton();
     }
   });
 
-  async function fallbackAdSimulation() {
-    adBtnText.textContent = 'Streaming Sponsored Media (5s)...';
-    setTimeout(async () => {
-      await claimAdReward();
-    }, 4500);
+  function resetAdButton() {
+    adBtn.disabled = false;
+    adBtnText.textContent = 'Watch Video Ad (+5 SEZO)';
   }
 
   async function claimAdReward() {
-    adBtnText.textContent = 'Verifying View on Blockchain...';
     try {
       const res = await fetch('/api/ad-reward', {
         method: 'POST',
@@ -258,7 +264,7 @@ function initAdEarningEvents() {
 
       const data = await res.json();
       if (data.success && data.reward) {
-        showToast('Success! +5 SEZO added for watching ad', 'success');
+        showToast('Verified! +5 SEZO added for watching ad', 'success');
         if (window.SEEZO_STATE.user) {
           window.SEEZO_STATE.user.balance = data.reward.new_balance;
           window.SEEZO_STATE.user.total_earned = (window.SEEZO_STATE.user.total_earned || 0) + 5;
@@ -270,13 +276,12 @@ function initAdEarningEvents() {
     } catch (e) {
       showToast('Connection error during reward handshake', 'error');
     } finally {
-      adBtn.disabled = false;
-      adBtnText.textContent = 'Watch Video Ad (+5 SEZO)';
+      resetAdButton();
     }
   }
 }
 
-// PHASE 12, 13, 14: ওয়ালেট ও উইথড্রয়াল কন্ট্রোলার
+// ওয়ালেট ও উইথড্রয়াল
 function initWalletEvents() {
   const form = document.getElementById('withdrawal-form');
   const submitBtn = document.getElementById('btn-submit-withdraw');
@@ -347,7 +352,7 @@ function initWalletEvents() {
   }
 }
 
-// ট্রানজ্যাকশন হিস্ট্রি ফেচ ও ডিসপ্লে
+// ট্রানজ্যাকশন হিস্ট্রি ফেচ
 async function loadTransactions() {
   const list = document.getElementById('tx-history-list');
   if (!list || !window.SEEZO_STATE.initData) return;
@@ -384,7 +389,7 @@ async function loadTransactions() {
               </div>
               <div>
                 <div class="tx-desc">${tx.description || tx.type}</div>
-                <div class="tx-date">${tx.created_at ? new Date(tx.created_at._seconds * 1000).toLocaleString() : 'Just now'}</div>
+                <div class="tx-date">${tx.created_at ? new Date(tx.created_at._seconds * 1000).toLocaleTimeString() : 'Recent'}</div>
               </div>
             </div>
             <div class="tx-amount-group">
@@ -396,11 +401,11 @@ async function loadTransactions() {
       }).join('');
     }
   } catch (err) {
-    console.error('Error fetching transactions:', err);
+    console.error('Transactions load error:', err);
   }
 }
 
-// বটম নেভিগেশন
+// নেভিগেশন
 function initNavigation() {
   const navButtons = document.querySelectorAll('.nav-item');
   const screens = document.querySelectorAll('.view-screen');
@@ -418,7 +423,6 @@ function initNavigation() {
         activeScreen.classList.add('active');
       }
 
-      // যদি ওয়ালেট স্ক্রিনে যায়, সাথে সাথে হিস্ট্রি রিফ্রেশ করবে
       if (targetScreenId === 'view-wallet') {
         loadTransactions();
       }
