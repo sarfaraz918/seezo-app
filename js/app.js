@@ -1,6 +1,6 @@
 /**
- * SEEZO Platform - Core Engine (Production Full Build)
- * All Phases 1 to 18 Integrated
+ * SEEZO Platform - Core Engine (Production Live Ads Build)
+ * Configured with Real AdsGram Block ID: 48325
  */
 
 window.SEEZO_STATE = {
@@ -8,7 +8,8 @@ window.SEEZO_STATE = {
   balance: 0,
   initData: '',
   timerInterval: null,
-  adsgramBlockId: "int-1736",
+  // আপনার আসল AdsGram Block ID
+  adsgramBlockId: "48325",
   botUsername: "SEEZO"
 };
 
@@ -75,7 +76,6 @@ async function initTelegramContext() {
         userAvatarEl.innerHTML = `<img src="${u.photo_url}" alt="Avatar">`;
       }
 
-      // প্রোফাইল স্ক্রিন সিঙ্ক
       const pName = document.getElementById('profile-name');
       const pUser = document.getElementById('profile-username');
       const pId = document.getElementById('profile-tg-id');
@@ -104,7 +104,6 @@ async function initTelegramContext() {
           userStatusEl.textContent = 'ONLINE';
           debugInfo.textContent = `Node: Verified User ID ${data.user.telegram_id} | Status: ACTIVE`;
 
-          // রেফারেল লিংক সেটআপ
           setupReferralLink(u.id);
         } else {
           userStatusEl.textContent = 'AUTH ERROR';
@@ -225,7 +224,7 @@ function initDailyRewardEvents() {
   }
 }
 
-// অ্যাড আর্নিং
+// আসল AdsGram Rewarded Video কন্ট্রোলার (Block ID: 48325)
 function initAdEarningEvents() {
   const adBtn = document.getElementById('btn-watch-ad');
   const adBtnText = document.getElementById('btn-ad-text');
@@ -239,7 +238,7 @@ function initAdEarningEvents() {
     }
 
     adBtn.disabled = true;
-    adBtnText.textContent = 'Loading Ad Stream...';
+    adBtnText.textContent = 'Connecting to Ad Network...';
 
     if (window.Adsgram) {
       try {
@@ -253,16 +252,16 @@ function initAdEarningEvents() {
           await claimAdReward();
         }).catch((err) => {
           console.error('AdsGram Event:', err);
-          showToast('Ad not completed. Reward canceled.', 'error');
+          showToast('Ad was not completed or no inventory. Reward canceled.', 'error');
           resetAdButton();
         });
 
       } catch (err) {
-        showToast('Ad network unavailable.', 'error');
+        showToast('Ad network temporarily unavailable.', 'error');
         resetAdButton();
       }
     } else {
-      showToast('Ad SDK not ready. Try again in a moment.', 'error');
+      showToast('Ad provider SDK loading. Please try again in a moment.', 'error');
       resetAdButton();
     }
   });
@@ -299,7 +298,7 @@ function initAdEarningEvents() {
   }
 }
 
-// PHASE 15: টাস্ক কন্ট্রোলার
+// টাস্ক কন্ট্রোলার
 async function loadTasks() {
   const container = document.getElementById('tasks-list-container');
   if (!container || !window.SEEZO_STATE.initData) return;
@@ -388,7 +387,7 @@ window.performTask = async (taskId, actionUrl) => {
   }, 4500);
 };
 
-// PHASE 17: লিডারবোর্ড কন্ট্রোলার
+// লিডারবোর্ড কন্ট্রোলার
 async function loadLeaderboard() {
   const container = document.getElementById('leaderboard-list-container');
   const myRankEl = document.getElementById('my-rank-display');
@@ -426,7 +425,7 @@ async function loadLeaderboard() {
   }
 }
 
-// PHASE 16: রেফারেল লিঙ্ক ও শেয়ার
+// রেফারেল সিস্টেম
 function setupReferralLink(userId) {
   const input = document.getElementById('referral-link-input');
   const copyBtn = document.getElementById('btn-copy-ref');
@@ -447,7 +446,7 @@ function setupReferralLink(userId) {
 
   if (shareTgBtn) {
     shareTgBtn.onclick = () => {
-      const shareText = encodeURIComponent(`Join SEEZO and earn verified SEZO virtual coins with instant daily bonuses! Claim your 2000 SEZO reward.`);
+      const shareText = encodeURIComponent(`Join SEEZO and earn verified SEZO coins with daily rewards and instant payouts!`);
       const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`;
       if (window.Telegram?.WebApp) {
         window.Telegram.WebApp.openTelegramLink(shareUrl);
@@ -458,7 +457,7 @@ function setupReferralLink(userId) {
   }
 }
 
-// PHASE 18: মডাল (প্রাইভেসী পলিসি ও হেল্প সেন্টার)
+// মডাল
 function initModalEvents() {
   const modal = document.getElementById('info-modal');
   const modalTitle = document.getElementById('modal-title');
@@ -516,7 +515,7 @@ function initModalEvents() {
   }
 }
 
-// ওয়ালেট কন্ট্রোলার
+// ওয়ালেট
 function initWalletEvents() {
   const form = document.getElementById('withdrawal-form');
   const submitBtn = document.getElementById('btn-submit-withdraw');
@@ -587,7 +586,7 @@ function initWalletEvents() {
   }
 }
 
-// ট্রানজ্যাকশন হিস্ট্রি ফেচ
+// ট্রানজ্যাকশন হিস্ট্রি
 async function loadTransactions() {
   const list = document.getElementById('tx-history-list');
   if (!list || !window.SEEZO_STATE.initData) return;
