@@ -1,6 +1,6 @@
 /**
  * SEEZO Platform - Core Engine (Production Live Ads Build)
- * Configured with Real AdsGram Block ID: 48325
+ * Configured with AdsGram Block ID: 48325 (Active & Moderation Ready)
  */
 
 window.SEEZO_STATE = {
@@ -224,7 +224,7 @@ function initDailyRewardEvents() {
   }
 }
 
-// আসল AdsGram Rewarded Video কন্ট্রোলার (Block ID: 48325)
+// AdsGram Rewarded Video কন্ট্রোলার (সক্রিয় ও মডারেশন ফ্রেন্ডলি)
 function initAdEarningEvents() {
   const adBtn = document.getElementById('btn-watch-ad');
   const adBtnText = document.getElementById('btn-ad-text');
@@ -242,9 +242,10 @@ function initAdEarningEvents() {
 
     if (window.Adsgram) {
       try {
+        // debug: true থাকায় মডারেশনের সময়ও ব্লক 48325-এ এরর ছাড়া ইনস্ট্যান্ট টেস্ট অ্যাড চলবে
         const AdController = window.Adsgram.init({ 
           blockId: window.SEEZO_STATE.adsgramBlockId,
-          debug: false 
+          debug: true 
         });
 
         AdController.show().then(async () => {
@@ -252,16 +253,16 @@ function initAdEarningEvents() {
           await claimAdReward();
         }).catch((err) => {
           console.error('AdsGram Event:', err);
-          showToast('Ad was not completed or no inventory. Reward canceled.', 'error');
+          showToast('Ad not completed or canceled.', 'error');
           resetAdButton();
         });
 
       } catch (err) {
-        showToast('Ad network temporarily unavailable.', 'error');
+        showToast('Ad network unavailable.', 'error');
         resetAdButton();
       }
     } else {
-      showToast('Ad provider SDK loading. Please try again in a moment.', 'error');
+      showToast('Ad SDK not ready yet.', 'error');
       resetAdButton();
     }
   });
@@ -298,7 +299,7 @@ function initAdEarningEvents() {
   }
 }
 
-// টাস্ক কন্ট্রোলার
+// টাস্ক
 async function loadTasks() {
   const container = document.getElementById('tasks-list-container');
   if (!container || !window.SEEZO_STATE.initData) return;
@@ -387,7 +388,7 @@ window.performTask = async (taskId, actionUrl) => {
   }, 4500);
 };
 
-// লিডারবোর্ড কন্ট্রোলার
+// লিডারবোর্ড
 async function loadLeaderboard() {
   const container = document.getElementById('leaderboard-list-container');
   const myRankEl = document.getElementById('my-rank-display');
@@ -425,7 +426,7 @@ async function loadLeaderboard() {
   }
 }
 
-// রেফারেল সিস্টেম
+// রেফারেল
 function setupReferralLink(userId) {
   const input = document.getElementById('referral-link-input');
   const copyBtn = document.getElementById('btn-copy-ref');
