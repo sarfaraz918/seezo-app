@@ -16,15 +16,12 @@
 </head>
 <body>
 
-  <!-- Brand Startup Loader -->
+  <!-- Brand Startup Loader with Your Custom S Logo -->
   <div id="app-loader" class="app-loader">
     <div class="loader-content">
       <div class="loader-logo-wrap">
-        <svg class="loader-svg" viewBox="0 0 100 100" fill="none">
-          <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="#00E5FF" stroke-width="4" fill="#101622" />
-          <path d="M68 30 H36 C30 30 26 34 26 40 C26 46 30 50 36 50 H64 C70 50 74 54 74 60 C74 66 70 70 64 70 H32" 
-                stroke="#00D287" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+        <img src="logo.png" alt="SEEZO Emblem" class="loader-custom-logo">
+        <div class="loader-glow-ring"></div>
       </div>
       <h2 class="loader-brand-title">SEEZO</h2>
       <p class="loader-brand-subtitle">SECURE EARNING NETWORK</p>
@@ -37,26 +34,14 @@
   <!-- Toast Notification System -->
   <div id="toast-container" class="toast-container"></div>
 
-  <!-- Main Container -->
+  <!-- Main App Layout -->
   <div id="app-container" class="app-container">
     
-    <!-- Header -->
+    <!-- Top Bar with Your Custom S Logo -->
     <header class="top-bar">
       <div class="brand-container">
         <div class="brand-logo-wrap">
-          <svg class="seezo-brand-logo" viewBox="0 0 100 100" fill="none">
-            <defs>
-              <linearGradient id="seezoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00E5FF" />
-                <stop offset="100%" stop-color="#00D287" />
-              </linearGradient>
-            </defs>
-            <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" stroke="url(#seezoGrad)" stroke-width="4" fill="#101622" />
-            <path d="M68 30 H36 C30 30 26 34 26 40 C26 46 30 50 36 50 H64 C70 50 74 54 74 60 C74 66 70 70 64 70 H32" 
-                  stroke="url(#seezoGrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-            <circle cx="68" cy="30" r="4" fill="#00E5FF" />
-            <circle cx="32" cy="70" r="4" fill="#00D287" />
-          </svg>
+          <img src="logo.png" alt="SEEZO" class="seezo-brand-img">
         </div>
         <div class="brand-text">
           <span class="brand-title">SEEZO</span>
@@ -84,6 +69,7 @@
       <!-- SCREEN 1: HOME -->
       <section id="view-home" class="view-screen active">
         
+        <!-- 3D Coin & Balance Card -->
         <div class="coin-hero-card">
           <div class="coin-stage">
             <div class="coin-orbital-ring">
@@ -145,6 +131,7 @@
           </div>
         </div>
 
+        <!-- Metrics Grid -->
         <div class="metrics-grid">
           <div class="metric-card">
             <div class="metric-icon-wrap cyan">
@@ -207,7 +194,7 @@
           </div>
         </div>
 
-        <!-- Ad Earning -->
+        <!-- Sponsored Ads -->
         <div class="action-card ad-earning-card">
           <div class="action-card-header">
             <div class="action-card-title-group">
@@ -246,7 +233,7 @@
 
       </section>
 
-      <!-- SCREEN 2: TASKS (PHASE 15) -->
+      <!-- SCREEN 2: TASKS -->
       <section id="view-tasks" class="view-screen">
         <div class="tab-header-card">
           <h2 class="tab-main-title">Earning Quests</h2>
@@ -260,7 +247,7 @@
         </div>
       </section>
 
-      <!-- SCREEN 3: WALLET (PHASE 12, 13, 14) -->
+      <!-- SCREEN 3: WALLET -->
       <section id="view-wallet" class="view-screen">
         <div class="wallet-overview-card">
           <div class="wallet-stat-row">
@@ -363,7 +350,7 @@
         </div>
       </section>
 
-      <!-- SCREEN 4: LEADERBOARD (PHASE 17) -->
+      <!-- SCREEN 4: LEADERBOARD -->
       <section id="view-leaderboard" class="view-screen">
         <div class="tab-header-card">
           <div class="ranking-badge-top">
@@ -381,10 +368,8 @@
         </div>
       </section>
 
-      <!-- SCREEN 5: PROFILE, SETTINGS & REFERRALS (PHASE 16 & 18) -->
+      <!-- SCREEN 5: PROFILE & SETTINGS -->
       <section id="view-profile" class="view-screen">
-        
-        <!-- User Profile Card -->
         <div class="profile-card">
           <div class="profile-avatar-big" id="profile-avatar-big">
             <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -397,7 +382,6 @@
           <div class="profile-tg-id" id="profile-tg-id">ID: --------</div>
         </div>
 
-        <!-- PHASE 16: REFERRAL SYSTEM CARD -->
         <div class="action-card referral-share-card">
           <div class="action-card-header">
             <div class="action-card-title-group">
@@ -431,7 +415,6 @@
           </button>
         </div>
 
-        <!-- SETTINGS & INFO MENU -->
         <div class="settings-list">
           <button class="settings-item" id="btn-open-privacy">
             <div class="settings-item-left">
@@ -461,12 +444,11 @@
 
           <div class="app-version-foot">SEEZO Platform v1.0.0 • Mumbai Production Cluster</div>
         </div>
-
       </section>
 
     </main>
 
-    <!-- Navigation -->
+    <!-- Bottom Nav -->
     <nav class="bottom-nav">
       <button class="nav-item active" data-target="view-home">
         <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -512,7 +494,7 @@
 
   </div>
 
-  <!-- POPUP MODAL (PRIVACY / SUPPORT) -->
+  <!-- Info Modal -->
   <div id="info-modal" class="info-modal hidden">
     <div class="modal-backdrop"></div>
     <div class="modal-card">
