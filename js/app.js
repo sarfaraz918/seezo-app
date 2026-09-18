@@ -70,7 +70,7 @@ async function initTelegramContext() {
     tg.expand();
 
     if (tg.setHeaderColor) tg.setHeaderColor('#ffffff');
-    if (tg.setBackgroundColor) tg.setBackgroundColor('#fcfcfc');
+    if (tg.setBackgroundColor) tg.setBackgroundColor('#fbfbfb');
 
     window.SEEZO_STATE.initData = tg.initData;
     const initDataUnsafe = tg.initDataUnsafe;
@@ -169,8 +169,8 @@ function updateDashboardUI(userData) {
 
 // ৫টি ট্যাবের মধ্যে সুইচিং
 function initNavigation() {
-  const tabs = document.querySelectorAll('.tab-item');
-  const screens = document.querySelectorAll('.screen-tab');
+  const tabs = document.querySelectorAll('.bar-tab');
+  const screens = document.querySelectorAll('.screen-view');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -194,7 +194,7 @@ function initNavigation() {
 function initQuickTileClicks() {
   function goToTab(targetTabId) {
     triggerHaptic('selection');
-    const tabBtn = document.querySelector(`.tab-item[data-target="${targetTabId}"]`);
+    const tabBtn = document.querySelector(`.bar-tab[data-target="${targetTabId}"]`);
     if (tabBtn) tabBtn.click();
   }
 
@@ -397,11 +397,11 @@ async function loadLeaderboard() {
         const badgeClass = item.rank === 1 ? 'gold' : (item.rank === 2 ? 'silver' : (item.rank === 3 ? 'bronze' : ''));
         return `
           <div class="rank-row-card ${item.is_current_user ? 'is-me' : ''}">
-            <div class="rank-avatar-side">
-              <span class="rank-place-box ${badgeClass}">${item.rank}</span>
+            <div class="rank-left-cluster">
+              <span class="rank-number-box ${badgeClass}">${item.rank}</span>
               <div>
-                <div class="rank-title-text">${item.first_name} ${item.is_current_user ? '(You)' : ''}</div>
-                <div class="rank-sub-id">${item.username || `ID: ${item.telegram_id}`}</div>
+                <div class="rank-user-name">${item.first_name} ${item.is_current_user ? '(You)' : ''}</div>
+                <div class="rank-user-sub">${item.username || `ID: ${item.telegram_id}`}</div>
               </div>
             </div>
             <div class="rank-score-sum">${Number(item.total_earned).toLocaleString()} SEZO</div>
@@ -530,19 +530,19 @@ async function loadTransactions() {
     const data = await res.json();
     if (data.success && data.transactions) {
       if (data.transactions.length === 0) {
-        list.innerHTML = `<div class="empty-tx-placeholder">কোনো লেনদেন পাওয়া যায়নি</div>`;
+        list.innerHTML = `<div class="empty-state-box">কোনো লেনদেন পাওয়া যায়নি</div>`;
         return;
       }
 
       list.innerHTML = data.transactions.map(tx => {
         const isCredit = tx.amount_sezo > 0;
         return `
-          <div class="tx-row-classic">
+          <div class="tx-item-card">
             <div>
-              <div class="tx-lead-title">${tx.description || tx.type}</div>
-              <div class="tx-lead-date">${tx.created_at ? new Date(tx.created_at._seconds * 1000).toLocaleDateString() : 'Recent'}</div>
+              <div class="tx-title">${tx.description || tx.type}</div>
+              <div class="tx-date">${tx.created_at ? new Date(tx.created_at._seconds * 1000).toLocaleDateString() : 'Recent'}</div>
             </div>
-            <div class="tx-amount-sum ${isCredit ? 'credit' : 'debit'}">
+            <div class="tx-amount ${isCredit ? 'credit' : 'debit'}">
               ${isCredit ? '+' : ''}${tx.amount_sezo} SEZO
             </div>
           </div>
