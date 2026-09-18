@@ -1,6 +1,6 @@
 /**
- * SEEZO Platform - Core Engine (Executive Precision Build)
- * Persistent 24h Server-Synced Daily Bonus, Verified Ads & Haptic Controller
+ * SEEZO Platform - Core Engine (Remastered 100% Bulletproof Build)
+ * Instant X-Button Dismissal, Real-time Countdown Persistence & AdsGram 48325
  */
 
 window.SEEZO_STATE = {
@@ -11,7 +11,17 @@ window.SEEZO_STATE = {
   adsgramBlockId: "48325"
 };
 
-// হেপটিক ভাইব্রেশন ফিডব্যাক
+// গ্লোবাল ক্লোজ ফাংশনসমূহ (বাটনের অনক্লিকে সরাসরি ফায়ার হবে)
+window.closeWithdrawModal = function() {
+  const m = document.getElementById('withdraw-drawer-modal');
+  if (m) m.classList.add('hidden');
+};
+
+window.closeNoticeModal = function() {
+  const m = document.getElementById('notice-drawer-modal');
+  if (m) m.classList.add('hidden');
+};
+
 function triggerHaptic(type = 'light') {
   if (window.Telegram?.WebApp?.HapticFeedback) {
     if (type === 'impact') window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
@@ -30,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAdEarningEvents();
   initWalletEvents();
   initReferralEvents();
-  initModalEvents();
+  initSettingsModalEvents();
   checkPersistentCooldown();
 });
 
@@ -41,11 +51,11 @@ function handleAppLoader() {
       loader.classList.add('hidden');
       setTimeout(() => loader.remove(), 400);
     }
-  }, 800);
+  }, 700);
 }
 
-// এক্সিকিউটিভ নোটিশ মডাল
-function showNotice(title, htmlContent) {
+// ১০০% নির্ভরযোগ্য গ্লাস নোটিশ পপআপ
+function showGlassNotice(title, htmlContent) {
   const modal = document.getElementById('notice-drawer-modal');
   const titleEl = document.getElementById('notice-title');
   const bodyEl = document.getElementById('notice-body');
@@ -58,7 +68,7 @@ function showNotice(title, htmlContent) {
   }
 }
 
-// টেলিগ্রাম এবং প্রোফাইল সিঙ্ক (সার্ভার টাইম সিঙ্ক সহ)
+// টেলিগ্রাম ও ক্লাউড সিঙ্ক
 async function initTelegramContext() {
   const initialsEl = document.getElementById('top-user-initials');
   const homeNameEl = document.getElementById('home-user-name');
@@ -69,8 +79,8 @@ async function initTelegramContext() {
     tg.ready();
     tg.expand();
 
-    if (tg.setHeaderColor) tg.setHeaderColor('#ffffff');
-    if (tg.setBackgroundColor) tg.setBackgroundColor('#fbfbfb');
+    if (tg.setHeaderColor) tg.setHeaderColor('#07090e');
+    if (tg.setBackgroundColor) tg.setBackgroundColor('#07090e');
 
     window.SEEZO_STATE.initData = tg.initData;
     const initDataUnsafe = tg.initDataUnsafe;
@@ -109,9 +119,9 @@ async function initTelegramContext() {
           updateDashboardUI(data.user);
           setupReferralLink(u.id);
 
-          // সার্ভার থেকে ডেইলি বোনাসের লাইভ কুলডাউন সিঙ্ক
+          // সার্ভার থেকে লাইভ কুলডাউন সিঙ্ক
           if (data.daily_reward_next_ms && data.daily_reward_next_ms > Date.now()) {
-            localStorage.setItem('seezo_daily_cooldown_ms', data.daily_reward_next_ms);
+            localStorage.setItem('seezo_daily_lock_ts', data.daily_reward_next_ms);
             startCooldownTimer(data.daily_reward_next_ms);
           }
         }
@@ -122,15 +132,15 @@ async function initTelegramContext() {
   }
 }
 
-// লোকাল স্টোরেজ থেকে রিলোড হলেও টাইমার ধরে রাখা
+// লোকাল স্টোরেজ চেক (যাতে রিলোড হলেও টাইমার রিসেট না হয়)
 function checkPersistentCooldown() {
-  const savedCooldown = localStorage.getItem('seezo_daily_cooldown_ms');
-  if (savedCooldown) {
-    const nextClaimTime = Number(savedCooldown);
+  const savedTs = localStorage.getItem('seezo_daily_lock_ts');
+  if (savedTs) {
+    const nextClaimTime = Number(savedTs);
     if (nextClaimTime > Date.now()) {
       startCooldownTimer(nextClaimTime);
     } else {
-      localStorage.removeItem('seezo_daily_cooldown_ms');
+      localStorage.removeItem('seezo_daily_lock_ts');
     }
   }
 }
@@ -167,10 +177,10 @@ function updateDashboardUI(userData) {
   if (pWithdrawn) pWithdrawn.textContent = withdrawn.toLocaleString();
 }
 
-// ৫টি ট্যাবের মধ্যে সুইচিং
+// ট্যাব সুইচিং
 function initNavigation() {
-  const tabs = document.querySelectorAll('.bar-tab');
-  const screens = document.querySelectorAll('.screen-view');
+  const tabs = document.querySelectorAll('.cyber-tab');
+  const screens = document.querySelectorAll('.cyber-screen');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -190,11 +200,11 @@ function initNavigation() {
   });
 }
 
-// কুইক অ্যাকশন নেভিগেশন
+// কুইক টাইলস
 function initQuickTileClicks() {
   function goToTab(targetTabId) {
     triggerHaptic('selection');
-    const tabBtn = document.querySelector(`.bar-tab[data-target="${targetTabId}"]`);
+    const tabBtn = document.querySelector(`.cyber-tab[data-target="${targetTabId}"]`);
     if (tabBtn) tabBtn.click();
   }
 
@@ -216,7 +226,7 @@ function initQuickTileClicks() {
   });
 }
 
-// ডেইলি রিওয়ার্ড লজিক (১০০% পার্মানেন্ট কাউন্টডাউন)
+// ডেইলি রিওয়ার্ড (পার্মানেন্ট কাউন্টডাউন)
 function initDailyRewardEvents() {
   const claimBtn = document.getElementById('btn-claim-daily');
   const claimBtnText = document.getElementById('btn-claim-text');
@@ -226,12 +236,12 @@ function initDailyRewardEvents() {
   claimBtn.addEventListener('click', async () => {
     triggerHaptic('impact');
     if (!window.SEEZO_STATE.initData) {
-      showNotice('Notice', '<p>Open inside Telegram to claim your daily bonus.</p>');
+      showGlassNotice('Notice', '<p>Open inside Telegram client to claim reward.</p>');
       return;
     }
 
     claimBtn.disabled = true;
-    claimBtnText.textContent = 'যাচাই করা হচ্ছে...';
+    claimBtnText.textContent = 'Verifying...';
 
     try {
       const res = await fetch('/api/daily-reward', {
@@ -244,19 +254,19 @@ function initDailyRewardEvents() {
 
       if (data.success && data.reward) {
         triggerHaptic('success');
-        showNotice('Bonus Claimed', '<p>অভিনন্দন! <strong>+১০ SEZO</strong> আপনার ব্যালেন্সে সফলভাবে যুক্ত হয়েছে।</p>');
+        showGlassNotice('Bonus Claimed', '<p>অভিনন্দন! <strong>+১০ SEZO</strong> আপনার ব্যালেন্সে সফলভাবে যোগ হয়েছে।</p>');
         if (window.SEEZO_STATE.user) {
           window.SEEZO_STATE.user.balance = data.reward.new_balance;
           window.SEEZO_STATE.user.total_earned = (window.SEEZO_STATE.user.total_earned || 0) + 10;
           updateDashboardUI(window.SEEZO_STATE.user);
         }
-        localStorage.setItem('seezo_daily_cooldown_ms', data.reward.next_claim_ms);
+        localStorage.setItem('seezo_daily_lock_ts', data.reward.next_claim_ms);
         startCooldownTimer(data.reward.next_claim_ms);
       } else if (data.cooldown) {
-        localStorage.setItem('seezo_daily_cooldown_ms', Date.now() + data.remaining_ms);
+        localStorage.setItem('seezo_daily_lock_ts', Date.now() + data.remaining_ms);
         startCooldownTimer(Date.now() + data.remaining_ms);
       } else {
-        showNotice('Bonus Notice', `<p>${data.message || 'Daily bonus cooldown is active.'}</p>`);
+        showGlassNotice('Notice', `<p>${data.message || 'Daily cooldown active.'}</p>`);
         claimBtn.disabled = false;
         claimBtnText.textContent = 'Bonus Claim করুন';
       }
@@ -280,13 +290,13 @@ function startCooldownTimer(targetTimeMs) {
     const remaining = targetTimeMs - Date.now();
     if (remaining <= 0) {
       clearInterval(window.SEEZO_STATE.timerInterval);
-      localStorage.removeItem('seezo_daily_cooldown_ms');
+      localStorage.removeItem('seezo_daily_lock_ts');
       if (claimBtn) {
         claimBtn.disabled = false;
         claimBtnText.textContent = 'Bonus Claim করুন';
       }
       if (earnTimerText) earnTimerText.textContent = '24:00:00';
-      if (homeTimerDisplay) homeTimerDisplay.textContent = 'পরবর্তী bonus: প্রস্তুত';
+      if (homeTimerDisplay) homeTimerDisplay.textContent = 'পরবর্তী বোনাস: প্রস্তুত';
       return;
     }
     const h = String(Math.floor(remaining / (1000 * 60 * 60))).padStart(2, '0');
@@ -295,7 +305,7 @@ function startCooldownTimer(targetTimeMs) {
     const formatted = `${h}:${m}:${s}`;
 
     if (earnTimerText) earnTimerText.textContent = formatted;
-    if (homeTimerDisplay) homeTimerDisplay.textContent = `পরবর্তী bonus: ${formatted}`;
+    if (homeTimerDisplay) homeTimerDisplay.textContent = `পরবর্তী বোনাস: ${formatted}`;
     if (claimBtnText) claimBtnText.textContent = `আবার পাওয়া যাবে ${formatted}`;
   }
   update();
@@ -312,12 +322,12 @@ function initAdEarningEvents() {
   adBtn.addEventListener('click', async () => {
     triggerHaptic('impact');
     if (!window.SEEZO_STATE.initData) {
-      showNotice('Notice', '<p>বিজ্ঞাপন দেখতে টেলিগ্রাম অ্যাপের ভেতর থেকে প্রবেশ করুন।</p>');
+      showGlassNotice('Notice', '<p>বিজ্ঞাপন দেখতে টেলিগ্রাম অ্যাপ থেকে প্রবেশ করুন।</p>');
       return;
     }
 
     adBtn.disabled = true;
-    adBtnText.textContent = 'বিজ্ঞাপন লোড হচ্ছে...';
+    adBtnText.textContent = 'লোড হচ্ছে...';
 
     if (window.Adsgram) {
       try {
@@ -329,23 +339,23 @@ function initAdEarningEvents() {
         AdController.show().then(async () => {
           await claimAdReward();
         }).catch(() => {
-          showNotice('Notice', '<p>বিজ্ঞাপন সম্পূর্ণ দেখা হয়নি অথবা নেটওয়ার্ক ইনভেন্টরি খালি রয়েছে।</p>');
+          showGlassNotice('Ad Notice', '<p>বিজ্ঞাপন সম্পূর্ণ দেখা হয়নি অথবা এই মুহূর্তে বিজ্ঞাপন ইনভেন্টরি খালি রয়েছে।</p>');
           resetAdButton();
         });
 
       } catch (err) {
-        showNotice('Network Notice', '<p>অ্যাড নেটওয়ার্ক সাময়িকভাবে ব্যস্ত। অনুগ্রহ করে কিছুক্ষণ পর চেষ্টা করুন।</p>');
+        showGlassNotice('Network Notice', '<p>বিজ্ঞাপন নেটওয়ার্ক সাময়িকভাবে ব্যস্ত। কিছুক্ষণ পর চেষ্টা করুন।</p>');
         resetAdButton();
       }
     } else {
-      showNotice('Notice', '<p>বিজ্ঞাপন মডিউল লোড হচ্ছে। কয়েক সেকেন্ড পর আবার চেষ্টা করুন।</p>');
+      showGlassNotice('Notice', '<p>অ্যাড SDK প্রস্তুত হচ্ছে। কয়েক সেকেন্ড পর আবার চেষ্টা করুন।</p>');
       resetAdButton();
     }
   });
 
   function resetAdButton() {
     adBtn.disabled = false;
-    adBtnText.textContent = 'বিজ্ঞাপন দেখুন';
+    adBtnText.textContent = 'বিজ্ঞাপন দেখুন (+5 SEZO)';
   }
 
   async function claimAdReward() {
@@ -359,17 +369,17 @@ function initAdEarningEvents() {
       const data = await res.json();
       if (data.success && data.reward) {
         triggerHaptic('success');
-        showNotice('Reward Verified', '<p>অভিনন্দন! <strong>+৫ SEZO</strong> আপনার ব্যালেন্সে সফলভাবে যোগ হয়েছে।</p>');
+        showGlassNotice('Reward Verified', '<p>অভিনন্দন! <strong>+৫ SEZO</strong> আপনার ব্যালেন্সে যোগ হয়েছে।</p>');
         if (window.SEEZO_STATE.user) {
           window.SEEZO_STATE.user.balance = data.reward.new_balance;
           window.SEEZO_STATE.user.total_earned = (window.SEEZO_STATE.user.total_earned || 0) + 5;
           updateDashboardUI(window.SEEZO_STATE.user);
         }
       } else {
-        showNotice('Notice', `<p>${data.message || 'Ad reward error'}</p>`);
+        showGlassNotice('Notice', `<p>${data.message || 'Ad reward error'}</p>`);
       }
     } catch (e) {
-      showNotice('Network Error', '<p>সার্ভার কানেকশন এরর হয়েছে।</p>');
+      showGlassNotice('Network Error', '<p>সার্ভারের সাথে সংযোগ পাওয়া যায়নি।</p>');
     } finally {
       resetAdButton();
     }
@@ -396,15 +406,15 @@ async function loadLeaderboard() {
       container.innerHTML = data.leaderboard.map(item => {
         const badgeClass = item.rank === 1 ? 'gold' : (item.rank === 2 ? 'silver' : (item.rank === 3 ? 'bronze' : ''));
         return `
-          <div class="rank-row-card ${item.is_current_user ? 'is-me' : ''}">
-            <div class="rank-left-cluster">
-              <span class="rank-number-box ${badgeClass}">${item.rank}</span>
+          <div class="rank-row-neon ${item.is_current_user ? 'is-me' : ''}">
+            <div class="rank-left">
+              <span class="rank-hex-box ${badgeClass}">${item.rank}</span>
               <div>
-                <div class="rank-user-name">${item.first_name} ${item.is_current_user ? '(You)' : ''}</div>
-                <div class="rank-user-sub">${item.username || `ID: ${item.telegram_id}`}</div>
+                <div class="rank-title">${item.first_name} ${item.is_current_user ? '(You)' : ''}</div>
+                <div class="rank-sub">${item.username || `ID: ${item.telegram_id}`}</div>
               </div>
             </div>
-            <div class="rank-score-sum">${Number(item.total_earned).toLocaleString()} SEZO</div>
+            <div class="rank-score">${Number(item.total_earned).toLocaleString()} SEZO</div>
           </div>
         `;
       }).join('');
@@ -427,7 +437,7 @@ function setupReferralLink(userId) {
     copyBtn.onclick = () => {
       triggerHaptic('success');
       navigator.clipboard.writeText(referralLink).then(() => {
-        showNotice('Copied', '<p>রেফারেল লিংক ক্লিপবোর্ডে কপি করা হয়েছে!</p>');
+        showGlassNotice('Copied', '<p>রেফারেল লিংক ক্লিপবোর্ডে কপি করা হয়েছে!</p>');
       });
     };
   }
@@ -435,7 +445,7 @@ function setupReferralLink(userId) {
   if (shareTgBtn) {
     shareTgBtn.onclick = () => {
       triggerHaptic('impact');
-      const shareText = encodeURIComponent(`SEEZO-তে জয়েন করে প্রতিদিন ফ্রি SEZO কয়েন আয় করুন এবং বিকাশ/নগদে ক্যাশআউট নিন!`);
+      const shareText = encodeURIComponent(`SEEZO-তে জয়েন করে ফ্রি SEZO কয়েন আয় করুন এবং সরাসরি বিকাশ/নগদে ক্যাশআউট নিন!`);
       const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${shareText}`;
       if (window.Telegram?.WebApp) {
         window.Telegram.WebApp.openTelegramLink(shareUrl);
@@ -461,12 +471,12 @@ function initWalletEvents() {
       const amount = document.getElementById('withdraw-amount-select')?.value;
 
       if (!accountNum || accountNum.length < 11) {
-        showNotice('Invalid Input', '<p>অনুগ্রহ করে একটি সঠিক ১১ ডিজিটের মোবাইল নম্বর প্রদান করুন।</p>');
+        showGlassNotice('Invalid Input', '<p>অনুগ্রহ করে একটি সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন।</p>');
         return;
       }
 
       if (Number(window.SEEZO_STATE.balance || 0) < Number(amount)) {
-        showNotice('Insufficient Balance', `<p>আপনার ব্যালেন্সে পর্যাপ্ত SEZO নেই। উইথড্র করার জন্য নূন্যতম ${amount} SEZO প্রয়োজন।</p>`);
+        showGlassNotice('Insufficient Balance', `<p>আপনার ব্যালেন্সে পর্যাপ্ত SEZO নেই। উইথড্র করার জন্য নূন্যতম ${amount} SEZO প্রয়োজন।</p>`);
         return;
       }
 
@@ -490,8 +500,8 @@ function initWalletEvents() {
 
         if (data.success) {
           triggerHaptic('success');
-          document.getElementById('withdraw-drawer-modal')?.classList.add('hidden');
-          showNotice('Request Submitted', '<p>আপনার উইথড্র রিকোয়েস্ট অ্যাডমিন প্যানেলে পাঠানো হয়েছে। ২৪ ঘণ্টার মধ্যে রিভিউ করে টাকা পাঠানো হবে।</p>');
+          window.closeWithdrawModal();
+          showGlassNotice('Request Submitted', '<p>আপনার উইথড্র রিকোয়েস্ট অ্যাডমিন প্যানেলে পাঠানো হয়েছে। ২৪ ঘণ্টার মধ্যে রিভিউ করে টাকা পাঠানো হবে।</p>');
           if (window.SEEZO_STATE.user) {
             window.SEEZO_STATE.user.balance = data.data.new_balance;
             window.SEEZO_STATE.user.pending_withdrawal = data.data.pending;
@@ -500,10 +510,10 @@ function initWalletEvents() {
           form.reset();
           loadTransactions();
         } else {
-          showNotice('Notice', `<p>${data.message || 'Withdrawal failed'}</p>`);
+          showGlassNotice('Notice', `<p>${data.message || 'Withdrawal failed'}</p>`);
         }
       } catch (err) {
-        showNotice('Network Error', '<p>উইথড্র রিকোয়েস্ট পাঠাতে সমস্যা হয়েছে।</p>');
+        showGlassNotice('Network Error', '<p>উইথড্র রিকোয়েস্ট পাঠাতে সমস্যা হয়েছে।</p>');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Payout Request';
@@ -530,19 +540,19 @@ async function loadTransactions() {
     const data = await res.json();
     if (data.success && data.transactions) {
       if (data.transactions.length === 0) {
-        list.innerHTML = `<div class="empty-state-box">কোনো লেনদেন পাওয়া যায়নি</div>`;
+        list.innerHTML = `<div class="glass-empty-card">কোনো লেনদেন পাওয়া যায়নি</div>`;
         return;
       }
 
       list.innerHTML = data.transactions.map(tx => {
         const isCredit = tx.amount_sezo > 0;
         return `
-          <div class="tx-item-card">
+          <div class="tx-glass-item">
             <div>
-              <div class="tx-title">${tx.description || tx.type}</div>
-              <div class="tx-date">${tx.created_at ? new Date(tx.created_at._seconds * 1000).toLocaleDateString() : 'Recent'}</div>
+              <div class="tx-head-title">${tx.description || tx.type}</div>
+              <div class="tx-head-date">${tx.created_at ? new Date(tx.created_at._seconds * 1000).toLocaleDateString() : 'Recent'}</div>
             </div>
-            <div class="tx-amount ${isCredit ? 'credit' : 'debit'}">
+            <div class="tx-val-sum ${isCredit ? 'credit' : 'debit'}">
               ${isCredit ? '+' : ''}${tx.amount_sezo} SEZO
             </div>
           </div>
@@ -554,31 +564,14 @@ async function loadTransactions() {
   }
 }
 
-// মডাল ও ড্রয়ার ক্লোজার
-function initModalEvents() {
-  const withdrawModal = document.getElementById('withdraw-drawer-modal');
-  const noticeModal = document.getElementById('notice-drawer-modal');
-
-  document.getElementById('btn-close-withdraw')?.addEventListener('click', () => {
-    withdrawModal.classList.add('hidden');
-  });
-  document.getElementById('withdraw-backdrop')?.addEventListener('click', () => {
-    withdrawModal.classList.add('hidden');
-  });
-
-  document.getElementById('btn-close-notice')?.addEventListener('click', () => {
-    noticeModal.classList.add('hidden');
-  });
-  document.getElementById('notice-backdrop')?.addEventListener('click', () => {
-    noticeModal.classList.add('hidden');
-  });
-
+// সেটিংস ও ইনফো মডাল
+function initSettingsModalEvents() {
   document.getElementById('btn-open-privacy')?.addEventListener('click', () => {
-    showNotice('Privacy Policy', '<p>SEEZO আপনার টেলিগ্রাম আইডি ও ডাটা সম্পূর্ণ এনক্রিপ্টেড ক্লাউডে সংরক্ষণ করে। আর্থিক নিরাপত্তা শতভাগ নিশ্চিত করা হয়।</p>');
+    showGlassNotice('Privacy Policy', '<p>SEEZO আপনার টেলিগ্রাম আইডি ও ডাটা সম্পূর্ণ এনক্রিপ্টেড ক্লাউডে সংরক্ষণ করে। আর্থিক নিরাপত্তা শতভাগ নিশ্চিত করা হয়।</p>');
   });
 
   document.getElementById('btn-open-support')?.addEventListener('click', () => {
-    showNotice('Help & Support', '<p><strong>এক্সচেঞ্জ রেট:</strong> ২০ SEZO = ১.০০ BDT (২০০০ SEZO = ১০০ BDT)।<br><br>পেমেন্ট সংক্রান্ত কোনো জিজ্ঞাসা থাকলে টেলিগ্রাম অ্যাডমিনের সাথে যোগাযোগ করুন।</p>');
+    showGlassNotice('Help & Support', '<p><strong>এক্সচেঞ্জ রেট:</strong> ২০ SEZO = ১.০০ BDT (২০০০ SEZO = ১০০ BDT)।<br><br>পেমেন্ট সংক্রান্ত সহায়তার জন্য টেলিগ্রাম অ্যাডমিনের সাথে যোগাযোগ করুন।</p>');
   });
 }
 
