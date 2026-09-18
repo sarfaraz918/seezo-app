@@ -8,7 +8,7 @@ window.SEEZO_STATE = {
   balance: 0,
   initData: '',
   timerInterval: null,
-  adsgramBlockId: "48325"
+  adsgramBlockId: "45875"
 };
 
 // গ্লোবাল ক্লোজ ফাংশনসমূহ (বাটনের অনক্লিকে সরাসরি ফায়ার হবে)
