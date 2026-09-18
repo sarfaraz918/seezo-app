@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SEEZO Global Design System - Production CSS (Custom 3D Logo Integrated)
+   SEEZO Global Design System - Production CSS (Custom 3D Coin & Logo)
    ========================================================================== */
 
 :root {
@@ -71,7 +71,7 @@ body {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Startup App Loader with Custom 3D Logo */
+/* App Loader */
 .app-loader {
   position: fixed;
   inset: 0;
@@ -99,13 +99,13 @@ body {
 }
 
 .loader-logo-wrap {
-  width: 90px;
-  height: 90px;
+  width: 86px;
+  height: 86px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .loader-custom-logo {
@@ -114,7 +114,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--accent-blue);
-  box-shadow: 0 0 24px rgba(0, 136, 255, 0.65), 0 0 40px rgba(0, 229, 255, 0.35);
+  box-shadow: 0 0 24px rgba(0, 136, 255, 0.65);
   animation: logoPulse 2s ease-in-out infinite alternate;
 }
 
@@ -162,7 +162,7 @@ body {
   100% { width: 100%; }
 }
 
-/* Header & Top Bar with Custom Logo */
+/* Header */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -208,11 +208,7 @@ body {
   display: block;
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-}
-
+.brand-text { display: flex; flex-direction: column; }
 .brand-title {
   font-size: 16px;
   font-weight: 800;
@@ -223,19 +219,9 @@ body {
   line-height: 1.1;
 }
 
-.brand-tag {
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-}
+.brand-tag { font-size: 8px; font-weight: 600; letter-spacing: 1px; color: var(--text-muted); }
 
-.user-chip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+.user-chip { display: flex; align-items: center; gap: 10px; }
 .user-avatar {
   width: 34px;
   height: 34px;
@@ -249,30 +235,12 @@ body {
   overflow: hidden;
 }
 
-.user-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.user-info { display: flex; flex-direction: column; }
+.user-name { font-size: 13px; font-weight: 600; }
+.user-status-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.5px; color: var(--accent-cyan); }
 
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.user-status-badge {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--accent-cyan);
-}
-
-/* Main Views Layout */
+/* Main Views */
 .main-content {
   flex: 1;
   padding: 16px;
@@ -280,13 +248,8 @@ body {
   overflow-y: auto;
 }
 
-.view-screen {
-  display: none;
-}
-
-.view-screen.active {
-  display: block;
-}
+.view-screen { display: none; }
+.view-screen.active { display: block; }
 
 .tab-header-card {
   background: var(--bg-secondary);
@@ -296,20 +259,12 @@ body {
   margin-bottom: 16px;
 }
 
-.tab-main-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 4px;
-}
+.tab-main-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.tab-main-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 
-.tab-main-sub {
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-/* 3D Coin Card */
+/* ==========================================================================
+   CUSTOM 3D TURNING SEZO COIN WITH USER'S METALLIC ART
+   ========================================================================== */
 .coin-hero-card {
   background: linear-gradient(180deg, #162032 0%, #101726 100%);
   border: 1px solid var(--border-subtle);
@@ -324,19 +279,19 @@ body {
 
 .coin-stage {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 800px;
+  perspective: 900px;
   margin-bottom: 14px;
 }
 
 .coin-orbital-ring {
   position: absolute;
-  width: 144px;
-  height: 144px;
+  width: 154px;
+  height: 154px;
   border-radius: 50%;
   border: 1px dashed rgba(0, 229, 255, 0.25);
   animation: orbitRotate 12s linear infinite;
@@ -362,8 +317,8 @@ body {
 }
 
 .sezo-coin-3d-wrapper {
-  width: 96px;
-  height: 96px;
+  width: 104px;
+  height: 104px;
   cursor: pointer;
 }
 
@@ -382,17 +337,40 @@ body {
   border-radius: 50%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  filter: drop-shadow(0 4px 12px rgba(255, 184, 0, 0.35));
+  filter: drop-shadow(0 6px 16px rgba(0, 136, 255, 0.4));
+}
+
+.coin-bezel-rim {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #E2E8F0;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.4), 0 0 12px rgba(0, 229, 255, 0.35);
+  overflow: hidden;
+  position: relative;
+  background: #06090e;
+}
+
+.custom-coin-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.coin-back-img {
+  transform: scaleX(-1); /* পেছনের সাইডের আয়না প্রতিবিম্ব লুক */
+}
+
+.coin-metallic-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
 }
 
 .coin-front { transform: rotateY(0deg); }
 .coin-back { transform: rotateY(180deg); }
-
-.coin-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
 
 @keyframes coinAutoTurn {
   0% { transform: rotateY(0deg); }
