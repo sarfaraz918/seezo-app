@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SEEZO Global Design System - Complete Integrated Stylesheet
+   SEEZO Global Design System - Production CSS (Custom 3D Logo Integrated)
    ========================================================================== */
 
 :root {
@@ -10,6 +10,7 @@
   --border-subtle: #202b3d;
   --border-active: #2f3e57;
   --accent-cyan: #00e5ff;
+  --accent-blue: #0088ff;
   --accent-green: #00d287;
   --accent-gold: #ffb800;
   --text-primary: #f8fafc;
@@ -70,7 +71,7 @@ body {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Loader */
+/* Startup App Loader with Custom 3D Logo */
 .app-loader {
   position: fixed;
   inset: 0;
@@ -98,28 +99,35 @@ body {
 }
 
 .loader-logo-wrap {
-  width: 76px;
-  height: 76px;
-  margin-bottom: 18px;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.loader-svg {
+.loader-custom-logo {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.4));
-  animation: logoPulse 1.8s ease-in-out infinite alternate;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent-blue);
+  box-shadow: 0 0 24px rgba(0, 136, 255, 0.65), 0 0 40px rgba(0, 229, 255, 0.35);
+  animation: logoPulse 2s ease-in-out infinite alternate;
 }
 
 @keyframes logoPulse {
-  0% { transform: scale(0.96); }
-  100% { transform: scale(1.04); }
+  0% { transform: scale(0.95); box-shadow: 0 0 16px rgba(0, 136, 255, 0.5); }
+  100% { transform: scale(1.04); box-shadow: 0 0 32px rgba(0, 229, 255, 0.85); }
 }
 
 .loader-brand-title {
   font-size: 24px;
   font-weight: 800;
   letter-spacing: 3px;
-  background: linear-gradient(135deg, #00E5FF 0%, #00D287 100%);
+  background: linear-gradient(135deg, #00E5FF 0%, #0088FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 4px;
@@ -144,7 +152,7 @@ body {
 .loader-progress-fill {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #00E5FF, #00D287);
+  background: linear-gradient(90deg, #00E5FF, #0088FF);
   animation: loadProgress 1.2s ease-in-out forwards;
 }
 
@@ -154,7 +162,7 @@ body {
   100% { width: 100%; }
 }
 
-/* App Header & Structure */
+/* Header & Top Bar with Custom Logo */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -181,17 +189,22 @@ body {
 }
 
 .brand-logo-wrap {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid var(--accent-blue);
+  box-shadow: 0 0 10px rgba(0, 136, 255, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.35));
+  background: #000;
 }
 
-.seezo-brand-logo {
+.seezo-brand-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -204,7 +217,7 @@ body {
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 1.2px;
-  background: linear-gradient(135deg, #00E5FF 0%, #00D287 100%);
+  background: linear-gradient(135deg, #00E5FF 0%, #0088FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.1;
@@ -259,7 +272,7 @@ body {
   color: var(--accent-cyan);
 }
 
-/* Main Content Views */
+/* Main Views Layout */
 .main-content {
   flex: 1;
   padding: 16px;
@@ -468,22 +481,9 @@ body {
 .metric-icon-wrap.cyan { background: rgba(0, 229, 255, 0.1); color: var(--accent-cyan); }
 .metric-icon-wrap.green { background: rgba(0, 210, 135, 0.1); color: var(--accent-green); }
 
-.metric-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.metric-label {
-  font-size: 10px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.metric-value {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
+.metric-info { display: flex; flex-direction: column; }
+.metric-label { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+.metric-value { font-size: 13px; font-weight: 700; color: var(--text-primary); }
 
 /* Action Cards */
 .action-card {
@@ -548,7 +548,7 @@ body {
 
 .btn-primary-action {
   flex: 1;
-  background: linear-gradient(135deg, #00E5FF 0%, #00D287 100%);
+  background: linear-gradient(135deg, #00E5FF 0%, #0088FF 100%);
   border: none;
   border-radius: 12px;
   color: #0B0E14;
@@ -588,7 +588,7 @@ body {
 
 .cooldown-timer-badge.hidden { display: none; }
 
-/* Tasks Styles (Phase 15) */
+/* Tasks Styles */
 .tasks-list-container {
   display: flex;
   flex-direction: column;
@@ -624,25 +624,9 @@ body {
   flex-shrink: 0;
 }
 
-.task-texts h4 {
-  font-size: 13px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 2px;
-}
-
-.task-texts p {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.task-reward-tag {
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--accent-gold);
-  margin-top: 4px;
-  display: block;
-}
+.task-texts h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.task-texts p { font-size: 11px; color: var(--text-muted); }
+.task-reward-tag { font-size: 10px; font-weight: 700; color: var(--accent-gold); margin-top: 4px; display: block; }
 
 .btn-task-action {
   background: var(--bg-card);
@@ -663,7 +647,7 @@ body {
   cursor: default;
 }
 
-/* Wallet (Phase 12, 13, 14) */
+/* Wallet Styles */
 .wallet-overview-card {
   background: linear-gradient(180deg, #162032 0%, #101726 100%);
   border: 1px solid var(--border-subtle);
@@ -803,7 +787,7 @@ body {
 .tx-status-tag.completed { background: rgba(0, 210, 135, 0.15); color: var(--accent-green); }
 .tx-status-tag.pending { background: rgba(255, 184, 0, 0.15); color: var(--accent-gold); }
 
-/* Leaderboard (Phase 17) */
+/* Leaderboard */
 .ranking-badge-top {
   display: inline-flex;
   align-items: center;
@@ -839,12 +823,7 @@ body {
   background: rgba(0, 229, 255, 0.05);
 }
 
-.rank-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
+.rank-left { display: flex; align-items: center; gap: 12px; }
 .rank-number-badge {
   width: 28px;
   height: 28px;
@@ -867,7 +846,7 @@ body {
 .rank-sub { font-size: 10px; color: var(--text-muted); }
 .rank-earned { font-size: 13px; font-weight: 800; color: var(--accent-cyan); }
 
-/* Profile, Settings & Referrals (Phase 16 & 18) */
+/* Profile, Settings & Referrals */
 .profile-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
@@ -899,11 +878,7 @@ body {
 .profile-username { font-size: 12px; color: var(--accent-cyan); margin-top: 2px; }
 .profile-tg-id { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
 
-.referral-input-wrap {
-  display: flex;
-  gap: 8px;
-}
-
+.referral-input-wrap { display: flex; gap: 8px; }
 .btn-copy {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
@@ -937,13 +912,7 @@ body {
   cursor: pointer;
 }
 
-.settings-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-primary);
-}
-
+.settings-item-left { display: flex; align-items: center; gap: 12px; color: var(--text-primary); }
 .settings-item-left svg { color: var(--accent-cyan); }
 .app-version-foot { text-align: center; font-size: 10px; color: var(--text-muted); margin-top: 20px; }
 
