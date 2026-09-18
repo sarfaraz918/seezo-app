@@ -3,105 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>SEEZO Platform</title>
+  <title>SEEZO Ecosystem</title>
   
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 
-  <!-- Google Fonts: Editorial Classic Serif & Modern Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="editorial-body">
+<body class="neon-web3-body">
 
-  <!-- Bespoke Luxury Lattice Pattern Canvas -->
-  <div class="luxury-pattern-surface"></div>
+  <!-- Background Ambient Cyber Glows -->
+  <div class="cyber-glow glow-top"></div>
+  <div class="cyber-glow glow-bottom"></div>
 
-  <!-- Executive Startup Splash -->
+  <!-- Startup Splash Screen -->
   <div id="app-loader" class="app-loader">
-    <div class="loader-crest">
-      <div class="loader-logo-frame">
-        <img src="logo.png" alt="SEEZO" class="loader-logo-asset">
+    <div class="loader-cyber-card">
+      <div class="loader-avatar-ring">
+        <img src="logo.png" alt="SEEZO" class="loader-avatar-img">
       </div>
-      <h1 class="loader-brand-name">SEEZO</h1>
-      <span class="loader-brand-caption">OFFICIAL REWARD NETWORK</span>
-      <div class="loader-track-wrap">
-        <div class="loader-track-line"></div>
+      <h1 class="loader-title-neon">SEEZO</h1>
+      <span class="loader-badge-tag">REWARD NETWORK</span>
+      <div class="loader-energy-bar">
+        <div class="loader-energy-fill"></div>
       </div>
     </div>
   </div>
 
-  <div id="app-viewport" class="app-viewport">
+  <div id="app-canvas" class="app-canvas">
     
-    <!-- Top Executive Masthead Bar -->
-    <header class="masthead-bar">
-      <div class="masthead-left">
-        <div class="insignia-square">
-          <img src="logo.png" alt="SEEZO" class="insignia-pic">
+    <!-- Top Cyber Header -->
+    <header class="cyber-top-bar">
+      <div class="bar-brand">
+        <div class="brand-holo-frame">
+          <img src="logo.png" alt="SEEZO" class="brand-holo-img">
         </div>
-        <div class="insignia-text">
-          <span class="insignia-name">SEEZO</span>
-          <span class="insignia-sub">Rewards Platform</span>
+        <div class="brand-name-group">
+          <span class="brand-cyber-title">SEEZO</span>
+          <span class="brand-cyber-status">VERIFIED NODE</span>
         </div>
       </div>
 
-      <div class="masthead-right" id="top-user-avatar-btn">
-        <div class="user-pill-frame">
-          <div class="user-avatar-bubble" id="top-user-avatar">
-            <span id="top-user-initials">RA</span>
-          </div>
-          <span class="user-verified-dot"></span>
+      <div class="bar-profile" id="btn-top-profile">
+        <div class="user-neon-hex" id="top-user-avatar">
+          <span id="top-user-initials">RA</span>
         </div>
       </div>
     </header>
 
-    <!-- Main Screens Container -->
-    <main id="main-screens" class="main-screens">
+    <!-- Main Screens Layer -->
+    <main id="view-router" class="view-router">
       
       <!-- ==========================================
-           TAB 1: HOME SCREEN
+           SCREEN 1: HOME
            ========================================== -->
-      <section id="view-home" class="screen-view active">
+      <section id="view-home" class="cyber-screen active">
         
-        <!-- Welcome Hero Banner -->
-        <div class="welcome-hero-banner">
-          <span class="banner-micro-tag">WELCOME TO SEEZO</span>
-          <h2 class="banner-heading-serif">হ্যালো, <span id="home-user-name">Member</span></h2>
+        <!-- Welcome Strip -->
+        <div class="hero-greeting-strip">
+          <span class="greeting-micro">AUTHENTICATED IDENTITY</span>
+          <h2 class="greeting-user">হ্যালো, <span id="home-user-name">Member</span></h2>
         </div>
 
-        <!-- Luxury Treasury Balance Board -->
-        <div class="treasury-board-card">
-          <div class="treasury-content">
-            <div class="treasury-details">
-              <span class="treasury-caption">Available Balance</span>
-              <div class="treasury-bdt-main" id="balance-bdt-val">৳0.00</div>
-              <div class="treasury-sezo-sub">
-                <span id="balance-sezo-val">0</span> <strong class="gold-text">SEZO</strong>
+        <!-- 3D Neon Balance Core Card -->
+        <div class="neon-treasury-card">
+          <div class="card-glass-shine"></div>
+          
+          <div class="treasury-row">
+            <div class="treasury-val-col">
+              <span class="treasury-tag">CURRENT ASSET VALUE</span>
+              <div class="treasury-bdt-digits" id="balance-bdt-val">৳0.00</div>
+              <div class="treasury-sezo-digits">
+                <span id="balance-sezo-val">0</span> <strong class="neon-gold-pill">SEZO</strong>
               </div>
             </div>
 
-            <!-- Custom 3D Turning Coin -->
-            <div class="treasury-coin-stage" id="sezo-coin-elem">
-              <div class="turning-coin-token">
-                <img src="coin.png" alt="SEZO Coin" class="coin-asset-pic">
+            <!-- 3D Turning Custom Coin -->
+            <div class="coin-gyro-stage" id="sezo-coin-elem">
+              <div class="coin-3d-disc">
+                <img src="coin.png" alt="SEZO Coin" class="coin-face-img">
               </div>
             </div>
           </div>
 
-          <!-- Payout & Deposit Action Buttons Inside Treasury -->
-          <div class="treasury-btn-row">
-            <button class="btn-treasury green" id="btn-quick-earn">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="16"></line>
-                <line x1="8" y1="12" x2="16" y2="12"></line>
+          <!-- Quick Action Buttons Inside Core -->
+          <div class="core-action-grid">
+            <button class="btn-core earn" id="btn-quick-earn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
               <span>Earn SEZO</span>
             </button>
-            <button class="btn-treasury blue" id="btn-quick-withdraw">
+            <button class="btn-core withdraw" id="btn-quick-withdraw">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
@@ -111,266 +108,265 @@
           </div>
         </div>
 
-        <!-- 2x2 Quick Actions Navigation Tiles -->
-        <div class="section-label-header">
-          <span class="micro-title">EXPLORE</span>
-          <h3 class="section-heading">Quick Actions</h3>
+        <!-- Quick 2x2 Glass Tiles -->
+        <div class="screen-sub-header">
+          <span class="sub-micro">EXPLORE ECOSYSTEM</span>
+          <h3 class="sub-title">Quick Actions</h3>
         </div>
 
-        <div class="navigation-tiles-grid">
-          <div class="nav-tile" id="tile-go-earn">
-            <div class="tile-icon green">
+        <div class="glass-tiles-2x2">
+          <div class="glass-action-tile" id="tile-go-earn">
+            <div class="tile-glyph cyan">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </div>
-            <span class="tile-title">Earn</span>
-            <span class="tile-arrow">›</span>
+            <span class="tile-title-text">Earn Hub</span>
+            <span class="tile-chevron-neon">›</span>
           </div>
 
-          <div class="nav-tile" id="tile-go-tasks">
-            <div class="tile-icon blue">
+          <div class="glass-action-tile" id="tile-go-tasks">
+            <div class="tile-glyph purple">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </div>
-            <span class="tile-title">Tasks</span>
-            <span class="tile-arrow">›</span>
+            <span class="tile-title-text">Missions</span>
+            <span class="tile-chevron-neon">›</span>
           </div>
 
-          <div class="nav-tile" id="tile-go-wallet">
-            <div class="tile-icon purple">
-              <span class="bdt-symbol">৳</span>
+          <div class="glass-action-tile" id="tile-go-wallet">
+            <div class="tile-glyph green">
+              <span class="bdt-symbol-glyph">৳</span>
             </div>
-            <span class="tile-title">Wallet</span>
-            <span class="tile-arrow">›</span>
+            <span class="tile-title-text">Wallet</span>
+            <span class="tile-chevron-neon">›</span>
           </div>
 
-          <div class="nav-tile" id="tile-go-profile">
-            <div class="tile-icon yellow">
+          <div class="glass-action-tile" id="tile-go-profile">
+            <div class="tile-glyph gold">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
             </div>
-            <span class="tile-title">Profile</span>
-            <span class="tile-arrow">›</span>
+            <span class="tile-title-text">Profile</span>
+            <span class="tile-chevron-neon">›</span>
           </div>
         </div>
 
         <!-- Daily Bonus Status Strip -->
-        <div class="status-strip-card" id="bar-go-earn">
-          <div class="strip-badge yellow">
+        <div class="glass-interactive-strip" id="bar-go-earn">
+          <div class="strip-neon-circle">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6-6.3 4.6 2.3-7.1-6-4.5h7.6z"></path>
             </svg>
           </div>
-          <div class="strip-text-group">
-            <h4 class="strip-headline">Daily Bonus</h4>
-            <span class="strip-timer-note" id="home-timer-display">পরবর্তী bonus: প্রস্তুত</span>
+          <div class="strip-copy">
+            <h4 class="strip-header">Daily Reward Drop</h4>
+            <span class="strip-timer" id="home-timer-display">পরবর্তী বোনাস: প্রস্তুত</span>
           </div>
-          <span class="strip-action-link">দেখুন ›</span>
+          <button class="btn-strip-trigger">Open ›</button>
         </div>
 
       </section>
 
       <!-- ==========================================
-           TAB 2: EARN SCREEN
+           SCREEN 2: EARN
            ========================================== -->
-      <section id="view-earn" class="screen-view">
-        <div class="view-header-strip">
-          <h2 class="view-title-serif">Earn SEZO</h2>
-          <p class="view-subtitle">সহজ ও verified উপায়ে SEZO টোকেন সংগ্রহ করুন।</p>
+      <section id="view-earn" class="cyber-screen">
+        <div class="view-headline-wrap">
+          <h2 class="view-main-title">Earn Tokens</h2>
+          <p class="view-tagline">সহজ উপায়ে ভেরিফায়েড SEZO কয়েন সংগ্রহ করুন।</p>
         </div>
 
-        <!-- Daily Bonus Box with Real Countdown Engine -->
-        <div class="editorial-action-box">
-          <div class="box-top-header">
-            <div class="box-icon-circle yellow">
+        <!-- Daily Reward Hub Card -->
+        <div class="glass-hub-card">
+          <div class="hub-header-row">
+            <div class="hub-holo-icon gold">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                 <path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6-6.3 4.6 2.3-7.1-6-4.5h7.6z"></path>
               </svg>
             </div>
-            <div class="box-titles">
-              <h3 class="box-main-title">Daily Bonus</h3>
-              <p class="box-sub-desc">প্রতিদিন একবার bonus claim করুন</p>
+            <div class="hub-text-stack">
+              <h3 class="hub-main-text">Daily Login Bonus</h3>
+              <p class="hub-desc-text">প্রতি ২৪ ঘণ্টায় একবার ১০ SEZO ক্লেইম করুন</p>
             </div>
-            <span class="reward-pill green">+10 SEZO</span>
+            <span class="neon-pill-badge green">+10 SEZO</span>
           </div>
 
-          <!-- Cooldown Timer Well -->
-          <div class="cooldown-timer-well" id="hub-timer-well">
-            <span class="cooldown-label">পরবর্তী bonus</span>
-            <div class="cooldown-digits" id="earn-timer-text">24:00:00</div>
+          <!-- Countdown Well -->
+          <div class="timer-well-glass" id="hub-timer-well">
+            <span class="timer-desc-tiny">পরবর্তী বোনাস ক্লেইম সময়</span>
+            <div class="timer-digital-display" id="earn-timer-text">24:00:00</div>
           </div>
 
-          <button id="btn-claim-daily" class="btn-royal-blue full">
+          <button id="btn-claim-daily" class="btn-neon-action full">
             <span id="btn-claim-text">Bonus Claim করুন</span>
           </button>
         </div>
 
-        <!-- Sponsored Video Ad Action Box -->
-        <div class="editorial-action-box">
-          <div class="box-top-header">
-            <div class="box-icon-circle blue">
+        <!-- Sponsored Ads Card -->
+        <div class="glass-hub-card">
+          <div class="hub-header-row">
+            <div class="hub-holo-icon cyan">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </div>
-            <div class="box-titles">
-              <h3 class="box-main-title">Watch & Earn</h3>
-              <p class="box-sub-desc">Verified rewarded advertisement</p>
+            <div class="hub-text-stack">
+              <h3 class="hub-main-text">Sponsored Video Stream</h3>
+              <p class="hub-desc-text">অফিশিয়াল বিজ্ঞাপন দেখুন এবং টোকেন আয় করুন</p>
             </div>
-            <span class="reward-pill green">+5 SEZO</span>
+            <span class="neon-pill-badge green">+5 SEZO</span>
           </div>
 
-          <div class="video-preview-frame">
-            <div class="video-play-emblem">
+          <div class="ad-video-stage-glass">
+            <div class="play-orb-glow">
               <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                 <polygon points="6 4 18 12 6 20 6 4"></polygon>
               </svg>
             </div>
-            <h4 class="video-frame-title">Sponsored Ad Stream</h4>
-            <span class="video-frame-desc">সম্পূর্ণ ভিডিও অ্যাড দেখলে সাথে সাথে ৫ SEZO ব্যালেন্সে যোগ হবে</span>
+            <h4 class="ad-stage-heading">Verified Sponsored Video</h4>
+            <span class="ad-stage-sub">ভিডিও সম্পূর্ণ দেখা শেষ হলে সরাসরি ৫ SEZO ব্যালেন্সে যোগ হবে</span>
           </div>
 
-          <button id="btn-watch-ad" class="btn-royal-blue full">
-            <span id="btn-ad-text">বিজ্ঞাপন দেখুন</span>
+          <button id="btn-watch-ad" class="btn-neon-action full">
+            <span id="btn-ad-text">বিজ্ঞাপন দেখুন (+5 SEZO)</span>
           </button>
         </div>
-
       </section>
 
       <!-- ==========================================
-           TAB 3: RANKS (LEADERBOARD)
+           SCREEN 3: RANKS
            ========================================== -->
-      <section id="view-ranks" class="screen-view">
-        <div class="view-header-strip">
-          <h2 class="view-title-serif">Leaderboard</h2>
-          <p class="view-subtitle">SEEZO-এর শীর্ষ আর্নারদের তালিকা দেখুন।</p>
+      <section id="view-ranks" class="cyber-screen">
+        <div class="view-headline-wrap">
+          <h2 class="view-main-title">Leaderboard</h2>
+          <p class="view-tagline">বিশ্বজুড়ে শীর্ষ SEEZO আর্নারদের লাইভ তালিকা।</p>
         </div>
 
-        <div class="filter-segmented-bar">
-          <button class="seg-item active" data-filter="all">All Time</button>
-          <button class="seg-item" data-filter="month">Monthly</button>
-          <button class="seg-item" data-filter="week">Weekly</button>
+        <div class="glass-filter-bar">
+          <button class="filter-tab active" data-filter="all">All Time</button>
+          <button class="filter-tab" data-filter="month">Monthly</button>
+          <button class="filter-tab" data-filter="week">Weekly</button>
         </div>
 
-        <div id="ranks-list-container" class="ranks-stack-list">
-          <div class="empty-state-box">
-            <span class="empty-icon-star">★</span>
+        <div id="ranks-list-container" class="ranks-card-stack">
+          <div class="glass-empty-card">
+            <span class="empty-star-neon">★</span>
             <h4>র‍্যাঙ্কিং লোড হচ্ছে...</h4>
-            <p>লাইভ ডেটাবেস থেকে তালিকা আপডেট হচ্ছে</p>
+            <p>লাইভ ডেটাবেস থেকে শীর্ষ তালিকা সিঙ্ক করা হচ্ছে</p>
           </div>
         </div>
 
-        <!-- Sticky My Rank Footer Bar -->
-        <div class="sticky-rank-bar">
-          <span class="sticky-rank-lbl">Your Rank</span>
-          <span class="sticky-rank-val" id="my-rank-badge">-</span>
+        <!-- Sticky My Rank -->
+        <div class="sticky-my-rank-neon">
+          <span class="my-rank-label">Your Global Rank</span>
+          <span class="my-rank-badge" id="my-rank-badge">-</span>
         </div>
       </section>
 
       <!-- ==========================================
-           TAB 4: WALLET SCREEN
+           SCREEN 4: WALLET
            ========================================== -->
-      <section id="view-wallet" class="screen-view">
-        <div class="view-header-strip">
-          <h2 class="view-title-serif">Wallet</h2>
-          <p class="view-subtitle">আপনার ব্যালেন্স ও লেনদেনের হিসাব দেখুন।</p>
+      <section id="view-wallet" class="screen-view cyber-screen">
+        <div class="view-headline-wrap">
+          <h2 class="view-main-title">Wallet & Payouts</h2>
+          <p class="view-tagline">আপনার ভার্চুয়াল ব্যালেন্স ও ক্যাশআউট হিস্ট্রি।</p>
         </div>
 
-        <div class="wallet-stat-card">
-          <span class="stat-caption">Available Balance</span>
-          <div class="stat-bdt-digits" id="wallet-bdt-val">৳0.00</div>
-          <span class="stat-sezo-digits"><strong id="wallet-sezo-val">0</strong> SEZO</span>
+        <div class="glass-hub-card">
+          <span class="treasury-tag">WITHDRAWABLE ASSETS</span>
+          <div class="wallet-bdt-massive" id="wallet-bdt-val">৳0.00</div>
+          <span class="wallet-sezo-note"><strong id="wallet-sezo-val">0</strong> SEZO</span>
 
-          <div class="stat-duo-metrics">
-            <div class="duo-slice">
-              <span class="duo-label">Total Earned</span>
-              <strong class="duo-val" id="wallet-total-earned">0</strong>
+          <div class="wallet-stat-split">
+            <div class="split-col">
+              <span class="split-label">Total Earned</span>
+              <strong class="split-amount" id="wallet-total-earned">0</strong>
             </div>
-            <div class="duo-slice">
-              <span class="duo-label">Withdrawn</span>
-              <strong class="duo-val" id="wallet-total-withdrawn">0</strong>
+            <div class="split-col">
+              <span class="split-label">Withdrawn</span>
+              <strong class="split-amount" id="wallet-total-withdrawn">0</strong>
             </div>
           </div>
         </div>
 
-        <button id="btn-open-withdraw-drawer" class="btn-royal-blue full" style="margin-bottom: 24px;">
-          Withdraw
+        <button id="btn-open-withdraw-drawer" class="btn-neon-action full" style="margin-bottom: 22px;">
+          Withdraw Funds
         </button>
 
-        <div class="section-label-header">
-          <span class="micro-title">HISTORY</span>
-          <h3 class="section-heading">Transactions</h3>
+        <div class="screen-sub-header">
+          <span class="sub-micro">TRANSACTIONS</span>
+          <h3 class="sub-title">Activity Ledger</h3>
         </div>
 
-        <div id="wallet-tx-list" class="transactions-stack">
-          <div class="empty-state-box">কোনো লেনদেন রেকর্ড পাওয়া যায়নি</div>
+        <div id="wallet-tx-list" class="transactions-glass-stack">
+          <div class="glass-empty-card">কোনো লেনদেন রেকর্ড পাওয়া যায়নি</div>
         </div>
       </section>
 
       <!-- ==========================================
-           TAB 5: PROFILE SCREEN
+           SCREEN 5: PROFILE
            ========================================== -->
-      <section id="view-profile" class="screen-view">
+      <section id="view-profile" class="cyber-screen">
         
-        <div class="profile-masthead-card">
-          <div class="profile-avatar-circle" id="profile-avatar-box">
+        <div class="profile-hero-glass">
+          <div class="profile-cyber-avatar" id="profile-avatar-box">
             <span id="profile-big-initials">RA</span>
           </div>
-          <h2 class="profile-name-text" id="profile-full-name">Member</h2>
-          <span class="profile-username-tag" id="profile-username">@username</span>
+          <h2 class="profile-display-name" id="profile-full-name">Member</h2>
+          <span class="profile-handle-tag" id="profile-username">@username</span>
 
-          <div class="profile-summary-row">
-            <div class="sum-box">
-              <strong class="sum-num" id="profile-earned-val">0</strong>
-              <span class="sum-lbl">Earned</span>
+          <div class="profile-meta-kpi">
+            <div class="kpi-unit">
+              <strong class="kpi-num" id="profile-earned-val">0</strong>
+              <span class="kpi-sub">Total Earned</span>
             </div>
-            <div class="sum-box">
-              <strong class="sum-num" id="profile-withdrawn-val">0</strong>
-              <span class="sum-lbl">Withdrawn</span>
+            <div class="kpi-unit">
+              <strong class="kpi-num" id="profile-withdrawn-val">0</strong>
+              <span class="kpi-sub">Total Paid</span>
             </div>
           </div>
         </div>
 
-        <!-- Invite & Earn Card -->
-        <div class="editorial-action-box">
-          <h3 class="box-main-title" style="margin-bottom: 4px;">Invite & Earn</h3>
-          <p class="box-sub-desc" style="margin-bottom: 14px;">বন্ধুদের invite করে referral reward পাওয়ার সুযোগ।</p>
+        <!-- Invite & Earn -->
+        <div class="glass-hub-card">
+          <h3 class="hub-main-text" style="margin-bottom: 4px;">Invite & Earn</h3>
+          <p class="hub-desc-text" style="margin-bottom: 12px;">বন্ধুদের ইনভাইট করে রেফারেল রিওয়ার্ড পেয়ে যান।</p>
 
-          <div class="referral-input-wrapper">
-            <input type="text" id="referral-link-input" class="input-referral-text" readonly value="https://t.me/SEEZO/app...">
+          <div class="referral-glass-field">
+            <input type="text" id="referral-link-input" class="referral-text-input" readonly value="https://t.me/SEEZO/app...">
           </div>
 
-          <div class="button-split-row">
-            <button id="btn-copy-ref" class="btn-royal-blue half">Copy Link</button>
-            <button id="btn-share-tg" class="btn-framed half">Share</button>
+          <div class="btn-duo-container">
+            <button id="btn-copy-ref" class="btn-neon-action half">Copy Link</button>
+            <button id="btn-share-tg" class="btn-neon-outline half">Share</button>
           </div>
         </div>
 
-        <!-- Account Settings -->
-        <div class="section-label-header">
-          <span class="micro-title">ACCOUNT</span>
-          <h3 class="section-heading">Settings</h3>
+        <!-- Settings Links -->
+        <div class="screen-sub-header">
+          <span class="sub-micro">SYSTEM</span>
+          <h3 class="sub-title">Preferences</h3>
         </div>
 
-        <div class="settings-stack">
-          <button class="settings-item-row" id="btn-open-privacy">
-            <div class="item-left-group">
-              <span class="item-symbol-icon">◇</span>
-              <span>Privacy Policy</span>
+        <div class="settings-glass-list">
+          <button class="settings-glass-row" id="btn-open-privacy">
+            <div class="row-left-content">
+              <span class="row-icon-neon cyan">◇</span>
+              <span>Privacy Policy & Legal</span>
             </div>
-            <span class="item-chevron">›</span>
+            <span class="row-arrow">›</span>
           </button>
 
-          <button class="settings-item-row" id="btn-open-support">
-            <div class="item-left-group">
-              <span class="item-symbol-icon">?</span>
-              <span>Help & Support</span>
+          <button class="settings-glass-row" id="btn-open-support">
+            <div class="row-left-content">
+              <span class="row-icon-neon gold">?</span>
+              <span>Platform Guidelines & Help</span>
             </div>
-            <span class="item-chevron">›</span>
+            <span class="row-arrow">›</span>
           </button>
         </div>
 
@@ -378,18 +374,18 @@
 
     </main>
 
-    <!-- Bottom Navigation Bar (Pixel-Perfect Icons) -->
-    <nav class="bottom-app-bar">
-      <button class="bar-tab active" data-target="view-home">
-        <svg class="tab-glyph" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bottom Ultra-Neon Navigation Bar -->
+    <nav class="neon-bottom-nav">
+      <button class="cyber-tab active" data-target="view-home">
+        <svg class="tab-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
         </svg>
         <span class="tab-caption">Home</span>
       </button>
 
-      <button class="bar-tab" data-target="view-earn">
-        <svg class="tab-glyph" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="cyber-tab" data-target="view-earn">
+        <svg class="tab-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="12" y1="8" x2="12" y2="16"></line>
           <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -397,20 +393,20 @@
         <span class="tab-caption">Earn</span>
       </button>
 
-      <button class="bar-tab" data-target="view-ranks">
-        <svg class="tab-glyph" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="cyber-tab" data-target="view-ranks">
+        <svg class="tab-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
         </svg>
         <span class="tab-caption">Ranks</span>
       </button>
 
-      <button class="bar-tab" data-target="view-wallet">
-        <span class="tab-bdt-glyph">৳</span>
+      <button class="cyber-tab" data-target="view-wallet">
+        <span class="tab-currency-glyph">৳</span>
         <span class="tab-caption">Wallet</span>
       </button>
 
-      <button class="bar-tab" data-target="view-profile">
-        <svg class="tab-glyph" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="cyber-tab" data-target="view-profile">
+        <svg class="tab-icon-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
@@ -420,43 +416,42 @@
 
   </div>
 
-  <!-- WITHDRAWAL DRAWER MODAL -->
-  <div id="withdraw-drawer-modal" class="executive-drawer-overlay hidden">
-    <div class="drawer-backdrop" id="withdraw-backdrop"></div>
-    <div class="drawer-panel-sheet">
-      <div class="drawer-handle-bar"></div>
-      <div class="drawer-header-row">
-        <h3>Withdraw Funds</h3>
-        <button id="btn-close-withdraw" class="btn-drawer-dismiss">✕</button>
+  <!-- WITHDRAWAL GLASS MODAL -->
+  <div id="withdraw-drawer-modal" class="glass-sheet-overlay hidden" onclick="if(event.target===this) window.closeWithdrawModal()">
+    <div class="glass-sheet-panel">
+      <div class="sheet-drag-line"></div>
+      <div class="sheet-title-header">
+        <h3>Withdraw Assets</h3>
+        <button type="button" class="btn-sheet-close" onclick="window.closeWithdrawModal()">✕</button>
       </div>
 
       <form id="withdrawal-form">
-        <div class="drawer-field">
-          <label class="drawer-field-label">পেমেন্ট মেথড</label>
-          <div class="method-toggles-row">
-            <label class="toggle-pill">
+        <div class="sheet-form-field">
+          <label class="field-label-text">পেমেন্ট মেথড নির্বাচন করুন</label>
+          <div class="gateway-pill-row">
+            <label class="gateway-select-pill">
               <input type="radio" name="withdraw-method" value="bKash" checked>
-              <span class="pill-title">bKash</span>
+              <span class="pill-surface">bKash</span>
             </label>
-            <label class="toggle-pill">
+            <label class="gateway-select-pill">
               <input type="radio" name="withdraw-method" value="Nagad">
-              <span class="pill-title">Nagad</span>
+              <span class="pill-surface">Nagad</span>
             </label>
-            <label class="toggle-pill">
+            <label class="gateway-select-pill">
               <input type="radio" name="withdraw-method" value="Rocket">
-              <span class="pill-title">Rocket</span>
+              <span class="pill-surface">Rocket</span>
             </label>
           </div>
         </div>
 
-        <div class="drawer-field">
-          <label class="drawer-field-label">১১ ডিজিট একাউন্ট নম্বর</label>
-          <input type="tel" id="withdraw-account-num" class="drawer-input" placeholder="01XXXXXXXXX" maxlength="11" required>
+        <div class="sheet-form-field">
+          <label class="field-label-text">১১ ডিজিটের মোবাইল নম্বর</label>
+          <input type="tel" id="withdraw-account-num" class="sheet-glass-input" placeholder="01XXXXXXXXX" maxlength="11" required>
         </div>
 
-        <div class="drawer-field">
-          <label class="drawer-field-label">উইথড্রয়াল পরিমাণ</label>
-          <select id="withdraw-amount-select" class="drawer-select">
+        <div class="sheet-form-field">
+          <label class="field-label-text">উইথড্রয়াল পরিমাণ</label>
+          <select id="withdraw-amount-select" class="sheet-glass-select">
             <option value="2000">2,000 SEZO = ৳100.00 BDT</option>
             <option value="4000">4,000 SEZO = ৳200.00 BDT</option>
             <option value="6000">6,000 SEZO = ৳300.00 BDT</option>
@@ -464,23 +459,23 @@
           </select>
         </div>
 
-        <button type="submit" id="btn-submit-withdraw" class="btn-royal-blue full" style="margin-top: 10px;">
+        <button type="submit" id="btn-submit-withdraw" class="btn-neon-action full" style="margin-top: 10px;">
           Submit Payout Request
         </button>
       </form>
     </div>
   </div>
 
-  <!-- NOTICE / ERROR EXECUTIVE DRAWER -->
-  <div id="notice-drawer-modal" class="executive-drawer-overlay hidden">
-    <div class="drawer-backdrop" id="notice-backdrop"></div>
-    <div class="drawer-panel-sheet">
-      <div class="drawer-handle-bar"></div>
-      <div class="drawer-header-row">
+  <!-- 100% BULLETPROOF GLASS NOTICE / ERROR POPUP -->
+  <div id="notice-drawer-modal" class="glass-sheet-overlay hidden" onclick="if(event.target===this) window.closeNoticeModal()">
+    <div class="glass-sheet-panel">
+      <div class="sheet-drag-line"></div>
+      <div class="sheet-title-header">
         <h3 id="notice-title">Notice</h3>
-        <button id="btn-close-notice" class="btn-drawer-dismiss">✕</button>
+        <button type="button" class="btn-sheet-close" onclick="window.closeNoticeModal()">✕</button>
       </div>
-      <div id="notice-body" class="drawer-inner-content"></div>
+      <div id="notice-body" class="notice-glass-body"></div>
+      <button type="button" class="btn-neon-outline full" style="margin-top: 16px;" onclick="window.closeNoticeModal()">Close</button>
     </div>
   </div>
 
