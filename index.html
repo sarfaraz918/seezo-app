@@ -10,210 +10,153 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="light-theme">
 
-  <!-- Brand Startup Loader -->
+  <!-- Minimal Editorial Startup Loader -->
   <div id="app-loader" class="app-loader">
     <div class="loader-content">
-      <div class="loader-logo-wrap">
-        <img src="logo.png" alt="SEEZO Emblem" class="loader-custom-logo">
+      <div class="loader-logo-frame">
+        <img src="logo.png" alt="SEEZO" class="loader-logo-img">
       </div>
-      <h2 class="loader-brand-title">SEEZO</h2>
-      <p class="loader-brand-subtitle">SECURE EARNING NETWORK</p>
-      <div class="loader-progress-bar">
-        <div class="loader-progress-fill"></div>
+      <h1 class="loader-title">SEEZO</h1>
+      <span class="loader-tag">REWARD ECOSYSTEM</span>
+      <div class="loader-line-wrap">
+        <div class="loader-line-fill"></div>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification System -->
-  <div id="toast-container" class="toast-container"></div>
-
-  <!-- Main App Layout -->
+  <!-- App Wrapper -->
   <div id="app-container" class="app-container">
     
-    <!-- Top Bar with Custom Brand Logo -->
+    <!-- Ultra-Clean Top Bar -->
     <header class="top-bar">
-      <div class="brand-container">
-        <div class="brand-logo-wrap">
-          <img src="logo.png" alt="SEEZO" class="seezo-brand-img">
+      <div class="brand-block">
+        <div class="brand-avatar-wrap">
+          <img src="logo.png" alt="SEEZO" class="brand-avatar">
         </div>
-        <div class="brand-text">
-          <span class="brand-title">SEEZO</span>
-          <span class="brand-tag">FINTECH NETWORK</span>
+        <div class="brand-headings">
+          <span class="brand-name">SEEZO</span>
+          <span class="brand-sub">FINTECH REWARDS</span>
         </div>
       </div>
 
-      <div class="user-chip">
-        <div class="user-avatar" id="top-user-avatar">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="user-profile-badge" id="top-profile-trigger">
+        <div class="user-avatar-frame" id="top-user-avatar">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
         </div>
-        <div class="user-info">
-          <span class="user-name" id="top-user-name">Guest</span>
-          <span class="user-status-badge" id="top-user-status">SYNCING</span>
+        <div class="user-profile-meta">
+          <span class="user-display-name" id="top-user-name">Member</span>
+          <span class="user-status-pill" id="top-user-status">ACTIVE</span>
         </div>
       </div>
     </header>
 
-    <!-- Main Views Screen -->
+    <!-- Main Screens Container -->
     <main id="main-content" class="main-content">
       
-      <!-- SCREEN 1: HOME -->
+      <!-- SCREEN 1: HOME DASHBOARD -->
       <section id="view-home" class="view-screen active">
         
-        <!-- 3D SEZO COIN WITH YOUR CUSTOM METALLIC COIN ART -->
-        <div class="coin-hero-card">
-          <div class="coin-stage">
-            <div class="coin-orbital-ring">
-              <span class="orbit-dot dot-1"></span>
-              <span class="orbit-dot dot-2"></span>
-              <span class="orbit-dot dot-3"></span>
-            </div>
-
-            <!-- 3D Turning SEZO Coin -->
-            <div class="sezo-coin-3d-wrapper">
-              <div class="sezo-coin-3d" id="sezo-coin-elem">
-                
-                <!-- Front Face of Custom Coin -->
-                <div class="coin-face coin-front">
-                  <div class="coin-bezel-rim">
-                    <img src="coin.png" alt="SEZO Coin Front" class="custom-coin-img">
-                    <div class="coin-metallic-sheen"></div>
-                  </div>
+        <!-- White Editorial Coin & Balance Hero -->
+        <div class="editorial-hero-card">
+          <div class="hero-pattern-bg"></div>
+          
+          <div class="coin-stage-minimal">
+            <div class="coin-orbit-ring"></div>
+            <div class="coin-turner" id="sezo-coin-elem">
+              <div class="coin-side coin-front">
+                <div class="coin-rim">
+                  <img src="coin.png" alt="SEZO" class="coin-art">
+                  <div class="coin-gloss"></div>
                 </div>
-
-                <!-- Back Face of Custom Coin -->
-                <div class="coin-face coin-back">
-                  <div class="coin-bezel-rim">
-                    <img src="coin.png" alt="SEZO Coin Back" class="custom-coin-img coin-back-img">
-                    <div class="coin-metallic-sheen"></div>
-                  </div>
+              </div>
+              <div class="coin-side coin-back">
+                <div class="coin-rim">
+                  <img src="coin.png" alt="SEZO" class="coin-art back-flipped">
+                  <div class="coin-gloss"></div>
                 </div>
-
               </div>
             </div>
           </div>
 
-          <div class="coin-details">
-            <span class="balance-label">AVAILABLE SEZO BALANCE</span>
-            <div class="balance-number-wrap">
-              <span class="balance-val" id="user-balance">0</span>
-              <span class="balance-curr">SEZO</span>
+          <div class="hero-balance-block">
+            <span class="balance-caption">AVAILABLE SEZO BALANCE</span>
+            <div class="balance-digits-row">
+              <h2 class="balance-digits" id="user-balance">0</h2>
+              <span class="balance-ticker">SEZO</span>
             </div>
-            <div class="rate-conversion-pill">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 6v12M16 10H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H8"></path>
-              </svg>
+            <div class="conversion-chip">
               <span id="bdt-equivalent-val">≈ 0.00 BDT</span>
+              <span class="chip-divider">•</span>
+              <span>20 SEZO = 1.00 BDT</span>
             </div>
           </div>
         </div>
 
-        <!-- Metrics Grid -->
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="metric-icon-wrap cyan">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-              </svg>
-            </div>
-            <div class="metric-info">
-              <span class="metric-label">Total Earned</span>
-              <span class="metric-value" id="metric-total-earned">0 SEZO</span>
-            </div>
+        <!-- Metric Cards -->
+        <div class="metrics-editorial-grid">
+          <div class="metric-box">
+            <span class="metric-title">Total Earned</span>
+            <span class="metric-num" id="metric-total-earned">0 SEZO</span>
           </div>
-
-          <div class="metric-card">
-            <div class="metric-icon-wrap green">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <div class="metric-info">
-              <span class="metric-label">Referrals</span>
-              <span class="metric-value" id="metric-referrals">0 Users</span>
-            </div>
+          <div class="metric-box">
+            <span class="metric-title">Referrals</span>
+            <span class="metric-num" id="metric-referrals">0 Users</span>
           </div>
         </div>
 
-        <!-- Daily Reward -->
-        <div class="action-card daily-reward-card">
-          <div class="action-card-header">
-            <div class="action-card-title-group">
-              <div class="action-badge-icon gold">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </div>
-              <div>
-                <h3 class="card-heading">Daily Login Bonus</h3>
-                <p class="card-subheading">Claim 10 SEZO every 24 hours</p>
-              </div>
+        <!-- Daily Reward Action Card -->
+        <div class="iconic-action-card">
+          <div class="card-content-left">
+            <div class="iconic-badge-symbol gold">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
             </div>
-            <div class="reward-pill">+10 SEZO</div>
+            <div>
+              <h3 class="card-title">Daily Bonus</h3>
+              <p class="card-subtext">Claim 10 SEZO every 24 hours</p>
+            </div>
           </div>
-          <div class="action-card-footer">
-            <button id="btn-claim-daily" class="btn-primary-action">
-              <span id="btn-claim-text">Claim Daily 10 SEZO</span>
+          <div class="card-action-right">
+            <button id="btn-claim-daily" class="btn-iconic primary">
+              <span id="btn-claim-text">+10 SEZO</span>
             </button>
-            <div id="daily-cooldown-timer" class="cooldown-timer-badge hidden">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
+            <div id="daily-cooldown-timer" class="timer-tag hidden">
               <span id="daily-timer-text">--:--:--</span>
             </div>
           </div>
         </div>
 
-        <!-- Sponsored Ads -->
-        <div class="action-card ad-earning-card">
-          <div class="action-card-header">
-            <div class="action-card-title-group">
-              <div class="action-badge-icon cyan">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
-              </div>
-              <div>
-                <h3 class="card-heading">Sponsored Ads</h3>
-                <p class="card-subheading">Watch verified video to earn</p>
-              </div>
+        <!-- Sponsored Ads Action Card -->
+        <div class="iconic-action-card">
+          <div class="card-content-left">
+            <div class="iconic-badge-symbol blue">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
             </div>
-            <div class="reward-pill cyan">+5 SEZO</div>
+            <div>
+              <h3 class="card-title">Sponsored Ads</h3>
+              <p class="card-subtext">Watch authentic videos to earn</p>
+            </div>
           </div>
-          <div class="action-card-footer">
-            <button id="btn-watch-ad" class="btn-secondary-action">
-              <span id="btn-ad-text">Watch Video Ad (+5 SEZO)</span>
+          <div class="card-action-right">
+            <button id="btn-watch-ad" class="btn-iconic secondary">
+              <span id="btn-ad-text">+5 SEZO</span>
             </button>
-          </div>
-        </div>
-
-        <!-- System Node Info -->
-        <div class="system-notice-card">
-          <div class="notice-icon">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-          </div>
-          <div class="notice-text">
-            <h3>Cryptographic Node Online</h3>
-            <p id="telegram-debug-info">Connected to Mumbai Cloud Datacenter.</p>
           </div>
         </div>
 
@@ -221,277 +164,266 @@
 
       <!-- SCREEN 2: TASKS -->
       <section id="view-tasks" class="view-screen">
-        <div class="tab-header-card">
-          <h2 class="tab-main-title">Earning Quests</h2>
-          <p class="tab-main-sub">Complete official community tasks and earn SEZO coin instantly.</p>
+        <div class="section-hero-header">
+          <h2 class="section-hero-title">Quests & Tasks</h2>
+          <p class="section-hero-sub">Complete verified sponsor missions and earn SEZO tokens.</p>
         </div>
-        <div id="tasks-list-container" class="tasks-list-container">
-          <div class="tx-empty-state">
-            <span>Loading active tasks...</span>
+
+        <div id="tasks-list-container" class="tasks-editorial-list">
+          <div class="empty-placeholder-card">
+            <div class="empty-icon-circle">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <h4>New Tasks Launching Soon</h4>
+            <p>Admin will release sponsored official quests shortly. Check back soon!</p>
           </div>
         </div>
       </section>
 
-      <!-- SCREEN 3: WALLET -->
+      <!-- SCREEN 3: WALLET & WITHDRAWAL -->
       <section id="view-wallet" class="view-screen">
-        <div class="wallet-overview-card">
-          <div class="wallet-stat-row">
+        <div class="wallet-editorial-hero">
+          <div class="wallet-balance-row">
             <div>
-              <span class="wallet-stat-label">Available Balance</span>
-              <div class="wallet-balance-big">
+              <span class="wallet-tiny-label">AVAILABLE FOR WITHDRAWAL</span>
+              <div class="wallet-massive-amount">
                 <span id="wallet-balance-val">0</span> <small>SEZO</small>
               </div>
-              <span class="wallet-bdt-sub" id="wallet-bdt-sub">≈ 0.00 BDT</span>
-            </div>
-            <div class="wallet-badge-rate">
-              20 SEZO = 1 BDT
+              <span class="wallet-bdt-caption" id="wallet-bdt-sub">≈ 0.00 BDT</span>
             </div>
           </div>
 
-          <div class="wallet-sub-grid">
-            <div class="wallet-sub-item">
-              <span class="sub-label">Pending Approval</span>
-              <span class="sub-val" id="wallet-pending-val">0 SEZO</span>
+          <div class="wallet-ledger-row">
+            <div class="ledger-pill">
+              <span class="pill-title">Pending</span>
+              <strong class="pill-val" id="wallet-pending-val">0 SEZO</strong>
             </div>
-            <div class="wallet-sub-item">
-              <span class="sub-label">Total Withdrawn</span>
-              <span class="sub-val" id="wallet-withdrawn-val">0 SEZO</span>
+            <div class="ledger-pill">
+              <span class="pill-title">Paid Out</span>
+              <strong class="pill-val" id="wallet-withdrawn-val">0 SEZO</strong>
             </div>
           </div>
         </div>
 
-        <div class="action-card withdraw-form-card">
-          <div class="action-card-header">
-            <div class="action-card-title-group">
-              <div class="action-badge-icon green">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23"></line>
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                </svg>
-              </div>
-              <div>
-                <h3 class="card-heading">Manual Payout Request</h3>
-                <p class="card-subheading">Min. 2000 SEZO (100 BDT) via bKash/Nagad</p>
-              </div>
-            </div>
+        <!-- Payout Form -->
+        <div class="editorial-card-form">
+          <div class="form-header-title">
+            <h3>Request Payout</h3>
+            <span class="badge-rate">Min: 2000 SEZO (100 BDT)</span>
           </div>
 
-          <form id="withdrawal-form" class="withdrawal-form">
-            <div class="form-group">
-              <label class="form-label">Payment Method</label>
-              <div class="payment-method-selector">
-                <label class="method-option">
+          <form id="withdrawal-form">
+            <div class="form-field-group">
+              <label class="form-field-label">Payment Gateway</label>
+              <div class="gateway-selector">
+                <label class="gateway-item">
                   <input type="radio" name="withdraw-method" value="bKash" checked>
-                  <span class="method-btn">bKash</span>
+                  <span class="gateway-box">bKash</span>
                 </label>
-                <label class="method-option">
+                <label class="gateway-item">
                   <input type="radio" name="withdraw-method" value="Nagad">
-                  <span class="method-btn">Nagad</span>
+                  <span class="gateway-box">Nagad</span>
                 </label>
-                <label class="method-option">
+                <label class="gateway-item">
                   <input type="radio" name="withdraw-method" value="Rocket">
-                  <span class="method-btn">Rocket</span>
+                  <span class="gateway-box">Rocket</span>
                 </label>
               </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">11-Digit Account Number</label>
-              <input type="tel" id="withdraw-account-num" class="form-input" placeholder="01XXXXXXXXX" maxlength="11" required>
+            <div class="form-field-group">
+              <label class="form-field-label">Account Phone Number</label>
+              <input type="tel" id="withdraw-account-num" class="input-editorial" placeholder="01XXXXXXXXX" maxlength="11" required>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Withdrawal Amount</label>
-              <select id="withdraw-amount-select" class="form-select">
-                <option value="2000">2,000 SEZO = 100 BDT</option>
-                <option value="4000">4,000 SEZO = 200 BDT</option>
-                <option value="6000">6,000 SEZO = 300 BDT</option>
-                <option value="10000">10,000 SEZO = 500 BDT</option>
+            <div class="form-field-group">
+              <label class="form-field-label">Select Payout Value</label>
+              <select id="withdraw-amount-select" class="select-editorial">
+                <option value="2000">2,000 SEZO (100.00 BDT)</option>
+                <option value="4000">4,000 SEZO (200.00 BDT)</option>
+                <option value="6000">6,000 SEZO (300.00 BDT)</option>
+                <option value="10000">10,000 SEZO (500.00 BDT)</option>
               </select>
             </div>
 
-            <button type="submit" id="btn-submit-withdraw" class="btn-primary-action full-width">
+            <button type="submit" id="btn-submit-withdraw" class="btn-editorial-submit">
               Submit Withdrawal Request
             </button>
           </form>
         </div>
 
-        <div class="tx-history-container">
-          <div class="section-title-wrap">
-            <h3 class="section-title">Audit Ledger & Transactions</h3>
-            <button id="btn-refresh-tx" class="btn-icon-refresh">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Transaction Audit History -->
+        <div class="editorial-transactions-block">
+          <div class="tx-header">
+            <h3>Recent Activity</h3>
+            <button id="btn-refresh-tx" class="btn-refresh-clean">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="23 4 23 10 17 10"></polyline>
                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
               </svg>
             </button>
           </div>
           
-          <div id="tx-history-list" class="tx-history-list">
-            <div class="tx-empty-state">
-              <span>No transactions recorded yet</span>
-            </div>
+          <div id="tx-history-list" class="tx-editorial-list">
+            <div class="empty-tx-box">No recorded transactions yet</div>
           </div>
         </div>
       </section>
 
       <!-- SCREEN 4: LEADERBOARD -->
       <section id="view-leaderboard" class="view-screen">
-        <div class="tab-header-card">
-          <div class="ranking-badge-top">
-            <span>YOUR CURRENT RANK:</span>
+        <div class="section-hero-header">
+          <div class="my-rank-pill">
+            <span>MY RANK:</span>
             <strong id="my-rank-display">SYNCING</strong>
           </div>
-          <h2 class="tab-main-title">Top SEEZO Earners</h2>
-          <p class="tab-main-sub">Real-time global rankings based on verified total earned SEZO.</p>
+          <h2 class="section-hero-title">Leaderboard</h2>
+          <p class="section-hero-sub">Top earners across the SEEZO global network.</p>
         </div>
-        <div id="leaderboard-list-container" class="leaderboard-list-container">
-          <div class="tx-empty-state">
-            <span>Loading live rankings...</span>
+
+        <div id="leaderboard-list-container" class="leaderboard-editorial-list">
+          <div class="empty-placeholder-card">
+            <span>Loading leaderboard...</span>
           </div>
         </div>
       </section>
 
-      <!-- SCREEN 5: PROFILE & SETTINGS -->
+      <!-- SCREEN 5: PROFILE & REFERRAL -->
       <section id="view-profile" class="view-screen">
-        <div class="profile-card">
-          <div class="profile-avatar-big" id="profile-avatar-big">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="profile-hero-card">
+          <div class="profile-hero-avatar-frame" id="profile-avatar-big">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </div>
-          <h3 class="profile-name" id="profile-name">Member</h3>
-          <span class="profile-username" id="profile-username">@username</span>
-          <div class="profile-tg-id" id="profile-tg-id">ID: --------</div>
+          <h3 class="profile-hero-name" id="profile-name">Member</h3>
+          <span class="profile-hero-user" id="profile-username">@username</span>
+          <span class="profile-hero-id" id="profile-tg-id">ID: --------</span>
         </div>
 
-        <div class="action-card referral-share-card">
-          <div class="action-card-header">
-            <div class="action-card-title-group">
-              <div class="action-badge-icon cyan">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="18" cy="5" r="3"></circle>
-                  <circle cx="6" cy="12" r="3"></circle>
-                  <circle cx="18" cy="19" r="3"></circle>
-                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                </svg>
-              </div>
-              <div>
-                <h3 class="card-heading">Invite Friends & Earn</h3>
-                <p class="card-subheading">Share your unique Telegram link</p>
-              </div>
-            </div>
-            <div class="reward-pill cyan">+25 SEZO</div>
+        <!-- Referral Card -->
+        <div class="iconic-referral-card">
+          <div class="referral-text-block">
+            <h3>Invite Friends, Earn SEZO</h3>
+            <p>Share your unique Telegram link. Earn +25 SEZO for each verified friend.</p>
           </div>
-          <div class="referral-input-wrap">
-            <input type="text" id="referral-link-input" class="form-input" readonly value="https://t.me/...">
-            <button id="btn-copy-ref" class="btn-copy">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-            </button>
+          <div class="referral-link-row">
+            <input type="text" id="referral-link-input" class="input-referral-clean" readonly value="https://t.me/...">
+            <button id="btn-copy-ref" class="btn-copy-clean">Copy</button>
           </div>
-          <button id="btn-share-tg" class="btn-primary-action full-width" style="margin-top: 10px;">
-            Share via Telegram
+          <button id="btn-share-tg" class="btn-share-telegram">
+            Share Link in Telegram
           </button>
         </div>
 
-        <div class="settings-list">
-          <button class="settings-item" id="btn-open-privacy">
-            <div class="settings-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-              <span>Privacy Policy</span>
-            </div>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Links List -->
+        <div class="profile-links-list">
+          <button class="profile-link-row" id="btn-open-privacy">
+            <span>Privacy Policy & Legal</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
 
-          <button class="settings-item" id="btn-open-support">
-            <div class="settings-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              <span>Help & Official Support</span>
-            </div>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <button class="profile-link-row" id="btn-open-support">
+            <span>Platform Guidelines & Help</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
-
-          <div class="app-version-foot">SEEZO Platform v1.0.0 • Mumbai Production Cluster</div>
         </div>
       </section>
 
     </main>
 
-    <!-- Bottom Nav -->
-    <nav class="bottom-nav">
-      <button class="nav-item active" data-target="view-home">
-        <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bespoke Bottom Navigation -->
+    <nav class="editorial-bottom-nav">
+      <button class="nav-tab-btn active" data-target="view-home">
+        <svg class="tab-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
         </svg>
-        <span class="nav-label">Home</span>
+        <span>Home</span>
       </button>
 
-      <button class="nav-item" data-target="view-tasks">
-        <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="nav-tab-btn" data-target="view-tasks">
+        <svg class="tab-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 11 12 14 22 4"></polyline>
           <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
         </svg>
-        <span class="nav-label">Tasks</span>
+        <span>Tasks</span>
       </button>
 
-      <button class="nav-item" data-target="view-wallet">
-        <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-          <line x1="1" y1="10" x2="23" y2="10"></line>
+      <button class="nav-tab-btn" data-target="view-wallet">
+        <svg class="tab-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
         </svg>
-        <span class="nav-label">Wallet</span>
+        <span>Wallet</span>
       </button>
 
-      <button class="nav-item" data-target="view-leaderboard">
-        <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="nav-tab-btn" data-target="view-leaderboard">
+        <svg class="tab-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 20V10"></path>
           <path d="M12 20V4"></path>
           <path d="M6 20v-6"></path>
         </svg>
-        <span class="nav-label">Ranking</span>
+        <span>Ranking</span>
       </button>
 
-      <button class="nav-item" data-target="view-profile">
-        <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="nav-tab-btn" data-target="view-profile">
+        <svg class="tab-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
-        <span class="nav-label">Profile</span>
+        <span>Profile</span>
       </button>
     </nav>
 
   </div>
 
-  <!-- Info Modal -->
-  <div id="info-modal" class="info-modal hidden">
-    <div class="modal-backdrop"></div>
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 id="modal-title" class="modal-title">Notice</h3>
-        <button id="btn-close-modal" class="btn-close-modal">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- POPUP 1: WELCOME / TELEGRAM CHANNEL JOIN MODAL -->
+  <div id="channel-welcome-modal" class="editorial-modal hidden">
+    <div class="modal-dim-backdrop"></div>
+    <div class="modal-sheet-card">
+      <div class="modal-channel-art">
+        <img src="logo.png" alt="SEEZO" class="channel-art-logo">
+      </div>
+      <h2 class="modal-sheet-title">Join SEEZO Official</h2>
+      <p class="modal-sheet-desc">Stay updated on daily codes, new earning tasks, and rapid withdrawal approvals.</p>
+      
+      <div class="modal-sheet-actions">
+        <button id="btn-join-channel" class="btn-channel-join">
+          Join Official Channel
+        </button>
+        <button id="btn-dismiss-welcome" class="btn-channel-dismiss">
+          Continue to App
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP 2: PROFILE DRAWER & ERROR NOTIFIER -->
+  <div id="info-drawer-modal" class="editorial-modal hidden">
+    <div class="modal-dim-backdrop" id="drawer-backdrop"></div>
+    <div class="modal-sheet-card">
+      <div class="modal-drag-indicator"></div>
+      <div class="drawer-header">
+        <h3 id="drawer-title" class="drawer-heading">Notification</h3>
+        <button id="btn-close-drawer" class="btn-drawer-close">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
-      <div id="modal-body" class="modal-body"></div>
+      <div id="drawer-body" class="drawer-content"></div>
     </div>
   </div>
 
