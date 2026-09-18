@@ -16,12 +16,11 @@
 </head>
 <body>
 
-  <!-- Brand Startup Loader with Your Custom S Logo -->
+  <!-- Brand Startup Loader -->
   <div id="app-loader" class="app-loader">
     <div class="loader-content">
       <div class="loader-logo-wrap">
         <img src="logo.png" alt="SEEZO Emblem" class="loader-custom-logo">
-        <div class="loader-glow-ring"></div>
       </div>
       <h2 class="loader-brand-title">SEEZO</h2>
       <p class="loader-brand-subtitle">SECURE EARNING NETWORK</p>
@@ -37,7 +36,7 @@
   <!-- Main App Layout -->
   <div id="app-container" class="app-container">
     
-    <!-- Top Bar with Your Custom S Logo -->
+    <!-- Top Bar with Custom Brand Logo -->
     <header class="top-bar">
       <div class="brand-container">
         <div class="brand-logo-wrap">
@@ -69,7 +68,7 @@
       <!-- SCREEN 1: HOME -->
       <section id="view-home" class="view-screen active">
         
-        <!-- 3D Coin & Balance Card -->
+        <!-- 3D SEZO COIN WITH YOUR CUSTOM METALLIC COIN ART -->
         <div class="coin-hero-card">
           <div class="coin-stage">
             <div class="coin-orbital-ring">
@@ -78,39 +77,26 @@
               <span class="orbit-dot dot-3"></span>
             </div>
 
+            <!-- 3D Turning SEZO Coin -->
             <div class="sezo-coin-3d-wrapper">
               <div class="sezo-coin-3d" id="sezo-coin-elem">
+                
+                <!-- Front Face of Custom Coin -->
                 <div class="coin-face coin-front">
-                  <svg viewBox="0 0 200 200" class="coin-svg" fill="none">
-                    <defs>
-                      <radialGradient id="coinGoldGrad" cx="35%" cy="35%" r="65%">
-                        <stop offset="0%" stop-color="#FFF4D0" />
-                        <stop offset="40%" stop-color="#FFB800" />
-                        <stop offset="85%" stop-color="#D97706" />
-                        <stop offset="100%" stop-color="#78350F" />
-                      </radialGradient>
-                      <linearGradient id="innerRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#00E5FF" />
-                        <stop offset="100%" stop-color="#00D287" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="100" cy="100" r="92" fill="url(#coinGoldGrad)" stroke="#FFD700" stroke-width="5" />
-                    <circle cx="100" cy="100" r="76" stroke="#92400E" stroke-width="2.5" stroke-dasharray="6 3" fill="none" />
-                    <circle cx="100" cy="100" r="68" fill="#141B28" stroke="url(#innerRimGrad)" stroke-width="3" />
-                    <path d="M75 75 H125 C132 75 136 79 136 85 C136 92 130 96 122 98 L78 102 C70 104 64 108 64 115 C64 121 68 125 75 125 H125" 
-                          stroke="#FFD700" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                    <text x="100" y="152" text-anchor="middle" fill="#00E5FF" font-size="14" font-weight="800" letter-spacing="2">SEZO</text>
-                  </svg>
+                  <div class="coin-bezel-rim">
+                    <img src="coin.png" alt="SEZO Coin Front" class="custom-coin-img">
+                    <div class="coin-metallic-sheen"></div>
+                  </div>
                 </div>
+
+                <!-- Back Face of Custom Coin -->
                 <div class="coin-face coin-back">
-                  <svg viewBox="0 0 200 200" class="coin-svg" fill="none">
-                    <circle cx="100" cy="100" r="92" fill="url(#coinGoldGrad)" stroke="#FFD700" stroke-width="5" />
-                    <circle cx="100" cy="100" r="76" stroke="#92400E" stroke-width="2.5" stroke-dasharray="6 3" fill="none" />
-                    <circle cx="100" cy="100" r="68" fill="#141B28" stroke="url(#innerRimGrad)" stroke-width="3" />
-                    <polygon points="100,60 130,85 130,125 100,150 70,125 70,85" stroke="#FFD700" stroke-width="5" fill="none"/>
-                    <text x="100" y="112" text-anchor="middle" fill="#00D287" font-size="28" font-weight="900">S</text>
-                  </svg>
+                  <div class="coin-bezel-rim">
+                    <img src="coin.png" alt="SEZO Coin Back" class="custom-coin-img coin-back-img">
+                    <div class="coin-metallic-sheen"></div>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -239,7 +225,6 @@
           <h2 class="tab-main-title">Earning Quests</h2>
           <p class="tab-main-sub">Complete official community tasks and earn SEZO coin instantly.</p>
         </div>
-
         <div id="tasks-list-container" class="tasks-list-container">
           <div class="tx-empty-state">
             <span>Loading active tasks...</span>
@@ -360,7 +345,6 @@
           <h2 class="tab-main-title">Top SEEZO Earners</h2>
           <p class="tab-main-sub">Real-time global rankings based on verified total earned SEZO.</p>
         </div>
-
         <div id="leaderboard-list-container" class="leaderboard-list-container">
           <div class="tx-empty-state">
             <span>Loading live rankings...</span>
